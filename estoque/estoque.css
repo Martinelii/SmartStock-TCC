@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    border: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+nav{
+    background: red;
+   /* display:inline-flex;*/
+}
+ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+li {
+    display: flex; /* Para que o texto e o ícone se alinhem verticalmente */
+    align-items: center; /* Para alinhar o texto e o ícone verticalmente */
+  }
+li:hover{
+    cursor: pointer;
+}
+li:active{
+    color: white;
+}
+/*Configurações GOOGLE ICONS*/
+/*.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}*/
+/*--------------------------------------------------------------*/
+.container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .filtros {
+    background-color: grey;
+    flex: 1 1 300px; /* determina o tamanho flexível e a largura mínima da caixa */
+  }
+
+  .dataView {
+    background: lightgrey;
+    flex: 2 1 auto; /* determina o tamanho flexível e a largura máxima da caixa */
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .filtros,
+    .dataView {
+      flex: 1 1 auto; /* faz com que os itens se estiquem ao longo do eixo transversal (no caso de serem column) */
+    }
+  }
