@@ -4,9 +4,6 @@ function irPara(pagina){
         try{
             window.location.href = "./" + pagina + "/";
         } catch {}
-        try{
-            window.location.href = "../" + pagina + "/";
-        } catch {}
     }
     else{
         try{
