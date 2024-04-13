@@ -6,12 +6,19 @@
         <title>SmartStock</title>
     </head>
     <body>
-
+        <script src="/SmartStock/src/js/index.js"></script>
         <script>
-            window.onload = function() {
-                window.location.href = "/SmartStock/inicio/";
+            window.onload = function(){
+                if (isLocalHost()){
+                    try{
+                        window.location.href = "/SmartStock/inicio/";
+                    } catch {}
+                } else {
+                    try{
+                        window.open('https://Martinelii.github.io/TCC/SmartStock/inicio/');
+                    } catch {}
+                }
             }
         </script>
-
     </body>
 </html>

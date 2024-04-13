@@ -10,16 +10,13 @@ function irPara(pagina){
     }
     else{
         try{
-            window.open("https://https://martinelii.github.io/SmartStock/" + pagina + "/", "_self");
-        } catch {}
-        try{
-            window.open("https://https://martinelii.github.io/SmartStock/" + pagina + "/", "_self");
+            window.open('https://Martinelii.github.io/TCC/SmartStock/' + pagina + '/', '_self');
         } catch {}
     }
 }
 
 function isLocalHost() {
-    if (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "")
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1")
         return true;
     return false;
 }
