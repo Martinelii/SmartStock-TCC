@@ -6,10 +6,9 @@
         <title>SmartStock</title>
     </head>
     <body>
-        <script src="/SmartStock/src/js/index.js"></script>
         <script>
             window.onload = function(){
-                if (isLocalHost()){
+                if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
                     try{
                         window.location.href = "/SmartStock/inicio/";
                     } catch {}
