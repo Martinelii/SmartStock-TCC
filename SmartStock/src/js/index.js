@@ -7,7 +7,7 @@ function irPara(pagina){
     }
     else{
         try{
-            window.open('https://Martinelii.github.io/TCC/SmartStock/' + pagina + '/', '_self');
+            window.open('https://martinelii.github.io/TCC/SmartStock/' + pagina + '/', '_self');
         } catch {}
     }
 }
