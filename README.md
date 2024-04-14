@@ -1,3 +1,3 @@
-# TCC
+# TCC SmartStock
 
-haleluia senhor
+o mal venceu e eu desisti de tentar fazer o github pages funcionar 👍
