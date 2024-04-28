@@ -1,6 +1,6 @@
 // função global de navegabilidade (nao gostei de como ficou, isso vai precisar de ajustes depois) -LL
 function irPara(pagina){
-    if (isLocalHost()){
+    //if (isLocalHost()){
         try{
             window.location.href("../" + pagina + "/");
         } catch {
@@ -8,12 +8,12 @@ function irPara(pagina){
                 window.location.href("./" + pagina + "/");
             } catch {}
         }
-    }
-    else{
+    //}
+    //else{
         //  try{
         //      window.location.href('https://martinelii.github.io/TCC/SmartStock/' + pagina + '/');
         //} catch {}
-    }
+    //}
 }
 
 function isLocalHost() {
