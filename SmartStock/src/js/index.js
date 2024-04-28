@@ -2,17 +2,17 @@
 function irPara(pagina){
     if (isLocalHost()){
         try{
-            location.assign("../" + pagina + "/");
+            window.location.href("../" + pagina + "/");
         } catch {
             try{
-                location.assign("./" + pagina + "/");
+                window.location.href("./" + pagina + "/");
             } catch {}
         }
     }
     else{
-        try{
-            location.assign('https://martinelii.github.io/TCC/SmartStock/' + pagina + '/');
-        } catch {}
+        //  try{
+        //      window.location.href('https://martinelii.github.io/TCC/SmartStock/' + pagina + '/');
+        //} catch {}
     }
 }
 

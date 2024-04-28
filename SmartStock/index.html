@@ -10,12 +10,12 @@
             window.onload = function(){
                 if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
                     try{
-                        location.replace("/SmartStock/inicio/");
+                        window.location.href("/SmartStock/inicio/");
                     } catch {}
                 } else {
-                    try{
-                        location.replace('https://martinelii.github.io/TCC/SmartStock/inicio/');
-                    } catch {}
+                //    try{
+                //        window.location.href('https://martinelii.github.io/TCC/SmartStock/inicio/');
+                //    } catch {}
                 }
             }
         </script>
