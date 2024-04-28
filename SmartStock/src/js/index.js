@@ -2,10 +2,10 @@
 function irPara(pagina){
     //if (isLocalHost()){
         try{
-            window.location.href("../" + pagina + "/");
+            window.location.assign("../" + pagina + "/");
         } catch {
             try{
-                window.location.href("./" + pagina + "/");
+                window.location.assign("./" + pagina + "/");
             } catch {}
         }
     //}
