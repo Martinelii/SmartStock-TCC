@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <?php
+echo "TESTE";
 include '../src/db/db_connection.php';
 session_start();
 
