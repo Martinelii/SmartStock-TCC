@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // Adicionando Elementos diretamente à sessão
+        // Adicionando Elementos diretamente à sessão s 
         while($row = $result->fetch_assoc()) {
             $_SESSION['email'] = $row["email"];
             $_SESSION['senha'] = $row["senha"];
