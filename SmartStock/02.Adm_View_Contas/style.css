@@ -1,0 +1,153 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #43766c;
+    padding: 10px 0;
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+.content {
+    display: flex;
+    flex: 1; /* Para ocupar todo o espaço vertical restante */
+}
+
+.menuLateral {
+    background-color: #B19470;
+    width: 200px; /* Largura fixa para o menu lateral */
+    display: flex; /* Adicionando display flex */
+    flex-direction: column; /* Definindo a direção como coluna */
+    padding: 10px; /* Adicionei um padding para espaçamento interno */
+}
+
+.dataGrid {
+    flex: 1; /* Para ocupar todo o espaço vertical restante */
+    background-color: #f9f9f9;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    /*width: calc(100% - 16px);  Leva em conta o padding */
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #43766c;
+    color: white;
+}
+
+.relatorio {
+    margin-bottom: 5px;
+}
+.relatorio{
+    margin-top: auto; /* Para posicionar no final do .menuLateral */
+}
+
+h4 {
+    font-size: 25px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+
+/* Modal (Pop-UP) */
+.modal { /*Fundo da modal*/
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    border-radius: 20px;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
