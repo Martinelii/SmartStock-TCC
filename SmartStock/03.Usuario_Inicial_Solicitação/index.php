@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../src/css/font.css">
     <link rel="stylesheet" href="style.css">
     <script defer src="../src/js/excluirSolicitacao.js"></script>
+    <script defer src="../src/js/preencherForm.js"></script>
 </head>
 <?php
 if (session_status() == PHP_SESSION_NONE) {
