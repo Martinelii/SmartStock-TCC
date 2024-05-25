@@ -1,3 +1,0 @@
-function imprimirRelatorio() {
-    window.print();
-}
