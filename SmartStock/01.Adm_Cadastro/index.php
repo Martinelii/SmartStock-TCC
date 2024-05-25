@@ -37,7 +37,10 @@ if (isset($_POST['submit'])) {
 
     // Validação básica de senha
     if ($senha != $confirSenha) {
-        echo "As senhas não coincidem!";
+        echo "<script>
+        alert('Senhas Incompativeis');
+        window.location.href = 'index.php';
+        </script>";
         exit();
     }
 
@@ -45,9 +48,15 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO conta (Email, Senha, Matricula, ContaStatus, FK_DEPARTAMENTO_CodSetor, FK_CARGO_CodCargo) VALUES ('$email', '$senha', '$matricula', '$status', '$codSetor', '$codCargo')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Cadastro realizado com sucesso!";
+        echo "<script>
+        alert('Cadastro Efetuado com Sucesso');
+        window.location.href = 'index.php';
+        </script>";
     } else {
-        echo "Erro ao cadastrar: " . $conn->error;
+        echo "<script>
+        alert('ERRO AO CADASTRAR'). $conn->error;
+        window.location.href = 'index.php';
+        </script>"; 
     }
 
     $conn->close();
