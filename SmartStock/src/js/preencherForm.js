@@ -26,3 +26,13 @@ function editarFormulario(id, matricula, cargo, setor, item, quantidade) {
     document.getElementById("btnConfirmar").style ="display: none;";
     document.getElementById("btnEditar").style ="display: block;";
 }
+
+function preencherFormularioAprovador(id_solicitacao, matricula_funcionario, cargo, setor, item, quantidade) {
+    document.getElementById('id_solicitacao_aprovar').value = id_solicitacao;
+    document.getElementById('id_solicitacao_recusar').value = id_solicitacao;
+    document.getElementById('matricula_funcionario').value = matricula_funcionario;
+    document.getElementById('cargo').value = cargo;
+    document.getElementById('setor').value = setor;
+    document.getElementById('item').value = item;
+    document.getElementById('quantidade').value = quantidade;
+}

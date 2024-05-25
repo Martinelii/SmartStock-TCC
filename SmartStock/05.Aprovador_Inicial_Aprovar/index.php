@@ -44,11 +44,11 @@
 
 <div class="container">
     <h2>Requisição do Item</h2>
-    <form method="post" action="processar_requisicao.php">
+    <form method="post" action="aprovar_requisicao.php">
         <div class="row">
             <div class="col-12">
-                <label for="id_solicitacao">ID Solicitação:</label>
-                <input type="text" id="id_solicitacao" name="id_solicitacao" required readonly>
+                <label for="id_solicitacao_aprovar">ID Solicitação:</label>
+                <input type="text" id="id_solicitacao_aprovar" name="id_solicitacao" required readonly>
             </div>
         </div>
         <div class="row">
@@ -77,8 +77,11 @@
                 <input type="number" id="quantidade" name="quantidade" required readonly>
             </div>
         </div>
-        <button type="submit" name="acao" value="APROVADA">Confirmar</button>
-        <button type="submit" class="recusar" name="acao" value="RECUSADA">Recusar</button>
+        <button type="submit">Aprovar</button>
+    </form>
+    <form method="post" action="recusar_requisicao.php">
+        <input type="hidden" id="id_solicitacao_recusar" name="id_solicitacao" required readonly>
+        <button type="submit" class="recusar">Recusar</button>
     </form>
 </div>
 <div class="container">
@@ -103,12 +106,7 @@
                         FROM requisicao
                         WHERE SetorFuncionario = '$setor_session' AND StatusSolicitacao = 'ABERTA' AND ID_Solicitacao != '$atual'";
 
-                /*filtro
-                
-                */
-
                 $result = $conn->query($sql);
-
 
                 if ($result->num_rows > 0) {
                     // Iterar sobre os resultados e exibir as linhas da tabela
@@ -129,7 +127,7 @@
                                 <td>{$status}</td>
                                 <td>{$cargo}</td>
                                 <td>{$setor}</td>
-                                <td><button type='button' onclick=\"preencherFormulario('{$id_solicitacao}', '{$matricula_funcionario}', '{$cargo}', '{$setor}', '{$item}', '{$quantidade}')\">Selecionar</button></td> 
+                                <td><button type='button' onclick=\"preencherFormularioAprovador('{$id_solicitacao}', '{$matricula_funcionario}', '{$cargo}', '{$setor}', '{$item}', '{$quantidade}')\">Selecionar</button></td> 
                               </tr>";
                     }
                 } else {
