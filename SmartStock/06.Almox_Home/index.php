@@ -108,7 +108,7 @@
                 //query SQL para obter as informações (PréPronta para utilização de filtro)
                 $sql = "SELECT ID_Solicitacao, NomeItem, QuantidadeItem, StatusSolicitacao, DataSolicitacao, FK_CONTA_Matricula, FK_ITEM_ID_Item
                         FROM requisicao
-                        WHERE StatusSolicitacao != 'ABERTA' AND StatusSolicitacao != 'RECUSADA' AND StatusSolicitacao != 'FINALIZADA'";
+                        WHERE StatusSolicitacao = 'APROVADA'";
 
                 $result = $conn->query($sql);
 
