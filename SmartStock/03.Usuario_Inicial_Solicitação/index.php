@@ -35,7 +35,7 @@ if (!isset($atual)) {
             $atual => "ID.php",
             "Inicio" => "../03.Usuario_Inicial_Solicitação/index.php",
             "Meus Pedidos" => "../04.Usuario_Visu_Pedidos/index.php",
-            "Sair" => "../00.Login/index.php"
+            "Sair" => "../src/sair.php"
         );
 
         // Gera links de navegação 

@@ -31,7 +31,7 @@
             $atual => "ID.php",
             "Inicio" => "../05.Aprovador_Inicial_Aprovar/index.php",
             "Requisições" =>"../05.1Aprovador_Visu_Req/index.php",
-            "Sair" => "../00.Login/index.php"
+            "Sair" => "../src/sair.php"
         );
 
         // Gera links de navegação 

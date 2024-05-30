@@ -4,24 +4,26 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 include '../src/db/db_connection.php';
 
+date_default_timezone_set('America/Sao_Paulo');
+
 // Verifica se o usuário está logado
 if (!isset($_SESSION['matricula'])) {
     header("Location: ../00.Login/index.php");
     exit();
 }
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $matricula = $_POST['matricula_funcionario'];
     $cargo = $_POST['cargo'];
     $setor = $_POST['setor'];
     $item = $_POST['item'];
     $quantidade = $_POST['quantidade'];
     $status = 'ABERTA';
-    $dataSolicitacao = date('Y-m-d');
+    $dataSolicitacao = date('Y-m-d H:i:s'); // Obtém a data e hora atuais
 
-    if($quantidade <= 0){
+    if ($quantidade <= 0) {
         echo "<script>
-        alert('Selecione uma quantidade valida!!');
+        alert('Selecione uma quantidade válida!!');
         window.location.href = 'index.php';
         </script>";
         exit();
@@ -41,7 +43,7 @@ if(isset($_POST['submit'])){
         exit();
     }
 
-    //Faz um SELECT em item para verificar se a quantidade que está sendo pedido é menor ou igual a quantidade disponivel no momento
+    // Verifica a quantidade disponível do item
     $sql_quantidade_disponivel = "SELECT Quantidade FROM item WHERE ID_Item = '$item_id'";
     $result_quantidade_disponivel = $conn->query($sql_quantidade_disponivel);
 
@@ -58,27 +60,25 @@ if(isset($_POST['submit'])){
             exit();
         }
 
+        // Insere a nova requisição na tabela requisicao
+        $sql_insert = "INSERT INTO requisicao (QuantidadeItem, CargoFuncionario, NomeItem, SetorFuncionario, StatusSolicitacao, DataSolicitacao, FK_ITEM_ID_Item, FK_CONTA_Matricula) 
+                       VALUES ('$quantidade', '$cargo', '$item', '$setor', '$status', '$dataSolicitacao', '$item_id', '$matricula')";
 
-    // Insere a nova requisição na tabela requisicao
-    $sql_insert = "INSERT INTO requisicao (QuantidadeItem, CargoFuncionario, NomeItem, SetorFuncionario, StatusSolicitacao, DataSolicitacao, FK_ITEM_ID_Item, FK_CONTA_Matricula) 
-                   VALUES ('$quantidade', '$cargo', '$item', '$setor', '$status', '$dataSolicitacao', '$item_id', '$matricula')";
-    
-    if ($conn->query($sql_insert) === TRUE) {
-        echo "<script>
-        alert('Requisição inserida com sucesso.');
-        window.location.href = 'index.php';
-        </script>";
-    } else {
-        echo "<script>
-        alert('Erro ao inserir requisição: ' . $conn->error');
-        window.location.href = 'index.php';
-        </script>";
+        if ($conn->query($sql_insert) === TRUE) {
+            echo "<script>
+            alert('Requisição inserida com sucesso.');
+            window.location.href = 'index.php';
+            </script>";
+        } else {
+            echo "<script>
+            alert('Erro ao inserir requisição: " . $conn->error . "');
+            window.location.href = 'index.php';
+            </script>";
+        }
+
+        $conn->close();
     }
-
-    $conn->close();
 }
-}
-
 
 if (isset($_POST['editar'])) {
     // Recuperar os dados do formulário
@@ -86,7 +86,21 @@ if (isset($_POST['editar'])) {
     $quantidade = $_POST['quantidade'];
     $item = $_POST['item']; // Certifique-se de recuperar o valor do item do formulário também
 
-    //Faz um SELECT em item para verificar se a quantidade que está sendo pedido é menor ou igual a quantidade disponivel no momento
+    // Obtém o ID do item com base no nome
+    $sql_item = "SELECT ID_Item FROM item WHERE NomeItem = '$item'";
+    $result_item = $conn->query($sql_item);
+    if ($result_item->num_rows > 0) {
+        $row_item = $result_item->fetch_assoc();
+        $item_id = $row_item['ID_Item'];
+    } else {
+        echo "<script>
+        alert('Item não encontrado.');
+        window.location.href = 'index.php';
+        </script>";
+        exit();
+    }
+
+    // Verifica a quantidade disponível do item
     $sql_quantidade_disponivel = "SELECT Quantidade FROM item WHERE ID_Item = '$item_id'";
     $result_quantidade_disponivel = $conn->query($sql_quantidade_disponivel);
 
@@ -113,7 +127,7 @@ if (isset($_POST['editar'])) {
         </script>";
     } else {
         echo "<script>
-        alert('Erro ao Atualizar a requisição: ' . $conn->error');
+        alert('Erro ao atualizar a requisição: " . $conn->error . "');
         window.location.href = 'index.php';
         </script>";
     }
@@ -121,5 +135,4 @@ if (isset($_POST['editar'])) {
     // Fechar a conexão com o banco de dados
     $conn->close();
 }
-
 ?>

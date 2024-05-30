@@ -45,7 +45,7 @@
             "Cadastra Item" => "../07.Almox_Cadastro_Item/index.php",
             "Estoque" => "../09.Almox_Estoq_Item/index.php",
             "Movimentações" => "../08.Almox_Estoq_Mov/index.php",
-            "Sair" => "../00.Login/index.php"
+            "Sair" => "../src/sair.php"
         );
 
         // Gera links de navegação 

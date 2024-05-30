@@ -27,7 +27,7 @@
                 $atual => "ID.php",
                 "Inicio" => "../01.Adm_Cadastro/index.php",
                 "Contas" => "../02.Adm_View_Contas/index.php",
-                "Sair" => "../00.Login/index.php" // Criar arquivo para executar a função de fechar sessão e redirecionar para login
+                "Sair" => "../src/sair.php"
             );
 
             // Gera links de navegação 
