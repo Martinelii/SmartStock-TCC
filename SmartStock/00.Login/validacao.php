@@ -34,6 +34,8 @@ function realizarLogin($email, $senha, $conn) {
             } elseif (strtolower($_SESSION['nomeSetor']) === 'almoxarifado') {
                 // Redireciona para a página do almoxarife
                 header("Location: ../06.Almox_Home/index.php");
+            }elseif($_SESSION['codCargo'] === '1' && $_SESSION['cargoFuncao'] != 'APROVADOR'){
+                header("Location: ../01.Adm_Cadastro/index.php");
             } else {
                 // Redireciona para uma página padrão ou exibe uma mensagem de erro
                 header("Location: ../03.Usuario_Inicial_Solicitação/index.php");

@@ -38,11 +38,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $stmt_get_stock->close();
         } else {
-            echo "Item não encontrado no estoque.";
+            echo "<script>
+            alert('Item não encontrado no estoque.');
+            window.location.href = 'index.php';
+            </script>";
             exit();
         }
     } else {
-        echo "Solicitação não encontrada.";
+        echo "<script>
+        alert('Solicitação não encontrada.');
+        window.location.href = 'index.php';
+        </script>";
+        
         exit();
     }
 
@@ -54,9 +61,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt_update_status->bind_param('si', $acao, $id_solicitacao);
 
     if ($stmt_update_status->execute()) {
-        echo "Solicitação {$acao} com sucesso!";
+        echo "<script>
+        alert('Solicitação Aprovada com sucesso!');
+        window.location.href = 'index.php';
+        </script>";
+        
     } else {
-        echo "Erro ao atualizar a solicitação: " . $conn->error;
+        echo "<script>
+        alert('Erro ao Aprovar a solicitação: . $conn->error');
+        window.location.href = 'index.php';
+        </script>";
+        
     }
 
     $stmt_update_status->close();
