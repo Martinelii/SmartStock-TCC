@@ -12,9 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt_update_status->bind_param('si', $acao, $id_solicitacao);
 
     if ($stmt_update_status->execute()) {
-        echo "Solicitação {$acao} com sucesso!";
+        echo "<script>
+        alert('Solicitação Recusada com sucesso!');
+        window.location.href = 'index.php';
+        </script>";
     } else {
-        echo "Erro ao atualizar a solicitação: " . $conn->error;
+        echo "<script>
+        alert('Erro ao Recusar a solicitação: . $conn->error');
+        window.location.href = 'index.php';
+        </script>";
     }
 
     $stmt_update_status->close();

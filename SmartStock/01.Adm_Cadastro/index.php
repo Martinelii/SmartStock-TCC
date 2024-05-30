@@ -3,78 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="../src/css/reset.css">
     <link rel="stylesheet" href="../src/css/font.css">
     <link rel="stylesheet" href="style.css">
-
     <title>Smart Stock - Cadastro</title>
 </head>
-<?php
-
-session_start();
-include '../src/db/db_connection.php';
-$atual = $_SESSION['matricula'];
-
-// Verifica se o usuário está logado
-if (!isset($atual)) {
-    header("Location: ../00.Login/index.php");
-    exit();
-}
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['matricula'])) {
-    // Redireciona de volta para a mesma página
-    header("Location: {$_SERVER['PHP_SELF']}");
-    exit();
-}
-if (isset($_POST['submit'])) {
-    $matricula = $_POST['inpMatricula'];
-    $email = $_POST['email'];
-    $senha = $_POST['password'];
-    $confirSenha = $_POST['confirpassword'];
-    $codCargo = $_POST['cargo'];
-    $codSetor = $_POST['setor'];
-    $status = $_POST['status'];
-
-    // Validação básica de senha
-    if ($senha != $confirSenha) {
-        echo "<script>
-        alert('Senhas Incompativeis');
-        window.location.href = 'index.php';
-        </script>";
-        exit();
-    }
-
-    // Inserção no banco de dados
-    $sql = "INSERT INTO conta (Email, Senha, Matricula, ContaStatus, FK_DEPARTAMENTO_CodSetor, FK_CARGO_CodCargo) VALUES ('$email', '$senha', '$matricula', '$status', '$codSetor', '$codCargo')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>
-        alert('Cadastro Efetuado com Sucesso');
-        window.location.href = 'index.php';
-        </script>";
-    } else {
-        echo "<script>
-        alert('ERRO AO CADASTRAR'). $conn->error;
-        window.location.href = 'index.php';
-        </script>"; 
-    }
-
-    $conn->close();
-}
-
-
-?>
-
 <body>
     <nav>
         <ul>
             <?php
+            session_start();
+            include '../src/db/db_connection.php';
+            $atual = $_SESSION['matricula'];
+
+            // Verifica se o usuário está logado
+            if (!isset($atual)) {
+                header("Location: ../00.Login/index.php");
+                exit();
+            }
+
             // Array de itens do menu
             $menu_items = array(
                 $atual => "ID.php",
                 "Inicio" => "../01.Adm_Cadastro/index.php",
                 "Contas" => "../02.Adm_View_Contas/index.php",
-                "Sair" => "../00.Login/index.php" //Criar arquivo para executar a função de fechar sessão e redirecionar para login
+                "Sair" => "../00.Login/index.php" // Criar arquivo para executar a função de fechar sessão e redirecionar para login
             );
 
             // Gera links de navegação 
@@ -89,15 +42,13 @@ if (isset($_POST['submit'])) {
             <header>Cadastrar</header>
             <form action="" method="post">
                 <div class="input ">
-                    <label  for="inpMatricula">Matricula</label>
-                    <input  class="inpMatricula" type="text" name="inpMatricula" id="inpMatricula" required>
+                    <label for="inpMatricula">Matricula</label>
+                    <input class="inpMatricula" type="text" name="inpMatricula" id="inpMatricula" required>
                 </div>
                 <div class="input ">
                     <label for="email">Email</label>
                     <input type="text" name="email" id="email" required>
                 </div>
-
-
                 <div class="input ">
                     <label for="cargo">Cargo</label>
                     <select name="cargo" id="cargo" required>
@@ -122,8 +73,6 @@ if (isset($_POST['submit'])) {
                         ?>
                     </select>
                 </div>
-                
-
                 <div class="input">
                     <label for="status">Status</label>
                     <select name="status" id="status">
@@ -131,7 +80,6 @@ if (isset($_POST['submit'])) {
                         <option value="Inativo">Inativo</option>
                     </select>
                 </div>
-
                 <div class="input">
                     <label for="password">Senha</label>
                     <input type="password" name="password" id="password" title="senha" required>
@@ -140,17 +88,65 @@ if (isset($_POST['submit'])) {
                     <label for="password">Confirmação Senha</label>
                     <input type="password" name="confirpassword" id="confirpassword" title="confirmação senha" required>
                 </div>
-
-
-
-
-
                 <div class="input">
                     <input type="submit" class="btn" name="submit" value="Cadastrar" required>
                 </div>
             </form>
         </div>
     </div>
+
+    <?php
+    if (isset($_POST['submit'])) {
+        $matricula = $_POST['inpMatricula'];
+        $email = $_POST['email'];
+        $senha = $_POST['password'];
+        $confirSenha = $_POST['confirpassword'];
+        $codCargo = $_POST['cargo'];
+        $codSetor = $_POST['setor'];
+        $status = $_POST['status'];
+
+        // Validação básica de senha
+        if ($senha != $confirSenha) {
+            echo "<script>
+            alert('Senhas Incompativeis');
+            window.location.href = 'index.php';
+            </script>";
+            exit();
+        }
+
+        // Inserção no banco de dados usando prepared statements
+        $sql = "INSERT INTO conta (Email, Senha, Matricula, ContaStatus, FK_DEPARTAMENTO_CodSetor, FK_CARGO_CodCargo) VALUES (?, ?, ?, ?, ?, ?)";
+
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->bind_param("ssssii", $email, $senha, $matricula, $status, $codSetor, $codCargo);
+
+            try {
+                if ($stmt->execute()) {
+                    echo "<script>
+                    alert('Cadastro Efetuado com Sucesso');
+                    window.location.href = 'index.php';
+                    </script>";
+                } else {
+                    throw new Exception("Erro ao executar o comando SQL");
+                }
+            } catch (Exception $e) {
+                echo "<script>
+                alert('ERRO DURANTE CADASTRO. Por favor, se os campos foram inseridos corretamente.');
+                window.location.href = 'index.php';
+                </script>";
+            }
+
+            $stmt->close();
+        } else {
+            echo "<script>
+            alert('ERRO AO PREPARAR COMANDO SQL. Por favor, tente novamente.');
+            window.location.href = 'index.php';
+            </script>";
+        }
+
+        $conn->close();
+    }
+    ?>
 
     <script src="/SmartStock/src/js/index.js"></script>
 </body>
