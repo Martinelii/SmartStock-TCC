@@ -31,8 +31,7 @@
             $atual => "ID.php",
             "Inicio" => "../05.Aprovador_Inicial_Aprovar/index.php",
             "Requisições" =>"../05.1Aprovador_Visu_Req/index.php",
-            "Sair" => "../src/sair.php"
-        );
+            "Sair" => "../src/php/sair.php");
 
         // Gera links de navegação 
         foreach ($menu_items as $label => $url) {

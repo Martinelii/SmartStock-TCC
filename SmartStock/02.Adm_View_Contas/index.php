@@ -29,8 +29,7 @@
                 $atual => "ID.php",
                 "Inicio" => "../01.Adm_Cadastro/index.php",
                 "Contas" => "../02.Adm_View_Contas/index.php",
-                "Sair" => "../src/sair.php"
-            );
+                "Sair" => "../src/php/sair.php"            );
 
             foreach ($menu_items as $label => $url) {
                 echo '<li><a href="' . $url . '">' . $label . '</a></li>';

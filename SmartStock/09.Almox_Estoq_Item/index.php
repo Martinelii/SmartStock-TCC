@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../src/css/font.css">
     <link rel="stylesheet" href="../src/css/printParametre.css">
     <script src="../src/js/imprimir.js"></script>
+    <script src="modalAdicionar.js"></script>
     <title>Document</title>
 </head>
 
@@ -35,7 +36,7 @@ if (!isset($atual)) {
                 "Cadastra Item" => "../07.Almox_Cadastro_Item/index.php",
                 "Estoque" => "../09.Almox_Estoq_Item/index.php",
                 "Movimentações" => "../08.Almox_Estoq_Mov/index.php",
-                "Sair" => "../src/sair.php"
+                "Sair" => "../src/php/sair.php"
             );
 
             // Gera links de navegação 
@@ -77,6 +78,7 @@ if (!isset($atual)) {
                             <th>Item</th>
                             <th>QTD</th>
                             <th>Data Recebimento</th>
+                            <th>Adicionar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,6 +107,7 @@ if (!isset($atual)) {
                                 <td>{$row['NomeItem']}</td>
                                 <td>{$row['Quantidade']}</td>
                                 <td>{$row['DataRecebimento']}</td>
+                                <td><button class='adicionar' type='button' onclick='abrirModalAdicioanar()'>Adicionar</button></td>
                               </tr>";
                             }
                         } else {

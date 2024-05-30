@@ -35,8 +35,7 @@ if (!isset($atual)) {
             $atual => "ID.php",
             "Inicio" => "../03.Usuario_Inicial_Solicitação/index.php",
             "Meus Pedidos" => "../04.Usuario_Visu_Pedidos/index.php",
-            "Sair" => "../src/sair.php"
-        );
+            "Sair" => "../src/php/sair.php"        );
 
         // Gera links de navegação 
         foreach ($menu_items as $label => $url) {
