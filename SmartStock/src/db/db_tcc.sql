@@ -37,9 +37,12 @@ CREATE TABLE `cargo` (
 --
 
 INSERT INTO `cargo` (`CodCargo`, `Cargo`, `Funcao`) VALUES
-(1, 'Gerente', 'APROVADOR'),
-(2, 'Analista', 'NÃO APROVADOR'),
-(3, 'Assistente', 'NÃO APROVADOR');
+(1, 'ADMINISTRADOR', 'NÃO APROVADOR'),
+(2, 'GERENTE', 'APROVADOR'),
+(3, 'ANALISTA', 'NÃO APROVADOR'),
+(4, 'ASSISTENTE', 'NÃO APROVADOR'),
+(5, 'ALMOXARIFE', 'NÃO APROVADOR'),
+(6, 'OPERADOR', 'NÃO APROVADOR');
 
 -- --------------------------------------------------------
 
@@ -72,10 +75,12 @@ CREATE TABLE `departamento` (
 --
 
 INSERT INTO `departamento` (`CodSetor`, `Setor`) VALUES
-(1, 'Recursos Humanos'),
-(2, 'Financeiro'),
-(3, 'TI'),
-(4, 'Logística');
+(1, 'ALMOXARIFADO'),
+(2, 'T.I'),
+(3, 'RH'),
+(4, 'PRODUÇÃO'),
+(5, 'FINANCEIRO'),
+(6, 'LIMPEZA');
 
 -- --------------------------------------------------------
 
@@ -95,11 +100,14 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`ID_Item`, `Quantidade`, `NomeItem`, `DataRecebimento`) VALUES
-(1, 100, 'Caneta azul', '2024-05-13'),
-(2, 150, 'Caneta preta', '2024-05-13'),
-(3, 80, 'Caneta vermelha', '2024-05-13'),
-(4, 500, 'Parafuso', '2024-05-13'),
-(5, 20, 'Pacote de folha A4', '2024-05-13');
+(1, 100, 'Caneta Azul', '2024-05-25'),
+(2, 100, 'Caneta Preta', '2024-05-30'),
+(3, 100, 'Caneta Vermelha', '2024-05-30'),
+(4, 100, 'Pacote Folha A4', '2024-05-30'),
+(5, 100, 'Borracha', '2024-05-30'),
+(6, 100, 'Lapis', '2024-05-30'),
+(7, 50, 'Servo-Motor Nema 17', '2024-05-30'),
+(8, 25, 'Sensor de Movimento', '2024-05-30');
 
 -- --------------------------------------------------------
 
@@ -165,19 +173,19 @@ ALTER TABLE `requisicao`
 -- AUTO_INCREMENT de tabela `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `CodCargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `CodCargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `departamento`
 --
 ALTER TABLE `departamento`
-  MODIFY `CodSetor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CodSetor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `item`
 --
 ALTER TABLE `item`
-  MODIFY `ID_Item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_Item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `requisicao`
