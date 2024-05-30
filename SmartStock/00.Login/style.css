@@ -1,63 +1,119 @@
-
-nav{
+nav {
     background: #43766C;
-    height: 40px ;
-
+    height: 40px;
     padding-left: 10px;
-
     display: flex;
     align-items: center;
 }
-body{
+
+body {
     background: #F8FAE5;
 }
-.container{
+
+.container {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 90vh; /*Está utilizando para "centralizar", ver outra forma dps*/
+    min-height: 90vh;
 }
-.boxform{
+
+.boxform {
     background-color: #fff;
     display: flex;
     flex-direction: column;
     padding: 25px 25px;
     border-radius: 10px;
-    box-shadow: 0 0 128px ;
+    box-shadow: 0 0 128px;
     width: 450px;
     margin: 0px 10px;
-
 }
-.boxform header{
+
+.boxform header {
     font-size: 25px;
     font-weight: 600;
     padding-bottom: 10px;
     border-bottom: 1px solid black;
     margin-bottom: 10px;
 }
-.boxform .input{ /*Aplicando a Div Input*/
+
+.boxform .input {
     display: flex;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     flex-direction: column;
 }
-.boxform input{ /*Aplicando ao Elemento Input*/
+
+.boxform input {
     height: 40px;
     width: 100%;
-    font-size:16px;
+    font-size: 16px;
     padding: 0 10px;
     border-radius: 10px;
     border: 1px solid #ccc;
     outline: none;
 }
-.btn{
+
+.btn {
     background: #43766C;
     color: #fff;
     cursor: pointer;
     transform: all .3s;
     margin-top: 10px;
 }
-.btn:hover{
+
+.btn:hover {
     opacity: .80;
 }
 
+/* Responsividade */
+@media (max-width: 768px) {
+    .boxform {
+        width: 90%;
+        padding: 20px;
+    }
 
+    .boxform header {
+        font-size: 22px;
+    }
+
+    .boxform input {
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .btn {
+        height: 35px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        height: 60px;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    nav h4 {
+        font-size: 18px;
+    }
+
+    .boxform {
+        width: 100%;
+        margin: 0 5px;
+        padding: 15px;
+    }
+
+    .boxform header {
+        font-size: 20px;
+    }
+
+    .boxform input {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .btn {
+        height: 30px;
+        font-size: 12px;
+    }
+}
