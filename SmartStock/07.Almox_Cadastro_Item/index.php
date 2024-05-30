@@ -35,9 +35,15 @@
 
         
         if ($conn->query($sql) === TRUE) {
-            echo "Cadastro realizado com sucesso!";
+            echo "<script>
+            alert('Cadastro realizado com sucesso!');
+            window.location.href = 'index.php';
+            </script>";
         } else {
-            echo "Erro ao cadastrar: " . $conn->error;
+            echo "<script>
+            alert('Erro ao cadastrar:  . $conn->error');
+            window.location.href = 'index.php';
+            </script>";
         }
     
         $conn->close();
