@@ -33,10 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($old_values['Email'] != $email || 
         $old_values['Senha'] != $senha || 
         $old_values['Cargo'] != $cargo || 
-        $old_values['Setor'] != $setor || 
-        $old_values['Funcao'] != $funcao || 
+        $old_values['Setor'] != $setor ||  
         $old_values['ContaStatus'] != $status) {
         $has_changes = true;
+    }
+
+    //Faz Validação para gantir que somente gerente pode ter cargo de aprovador
+    if($cargo != 'GERENTE'){
+        $funcao = 'NÃO APROVADOR';
+    }else{
+        $funcao = 'APROVADOR';
     }
 
     if ($has_changes) {

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../src/css/reset.css">
     <link rel="stylesheet" href="../src/css/font.css">
+    <link rel="stylesheet" href="../src/css/modal.css">
     <link rel="stylesheet" href="../src/css/printParametre.css">
     <title>Document</title>
 </head>
@@ -210,18 +211,6 @@
                         $setor_result = $conn->query($setor_query);
                         while ($setor_row = $setor_result->fetch_assoc()) {
                             echo "<option value='{$setor_row['Setor']}'>{$setor_row['Setor']}</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div>
-                    <label for="funcao">Função</label>
-                    <select name="funcao" id="funcaoModal">
-                        <?php
-                        $funcao_query = "SELECT DISTINCT Funcao FROM cargo";
-                        $funcao_result = $conn->query($funcao_query);
-                        while ($funcao_row = $funcao_result->fetch_assoc()) {
-                            echo "<option value='{$funcao_row['Funcao']}'>{$funcao_row['Funcao']}</option>";
                         }
                         ?>
                     </select>

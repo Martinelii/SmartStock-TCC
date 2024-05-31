@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/modal.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../src/css/reset.css">
     <link rel="stylesheet" href="../src/css/font.css">
@@ -107,8 +108,8 @@ if (!isset($atual)) {
                                 <td>{$row['NomeItem']}</td>
                                 <td>{$row['Quantidade']}</td>
                                 <td>{$row['DataRecebimento']}</td>
-                                <td><button class='adicionar' type='button' onclick='abrirModalAdicioanar()'>Adicionar</button></td>
-                              </tr>";
+                                <td><button class='adicionar' type='button' onclick='abrirModalAdicionar({$row['ID_Item']})'>Adicionar</button></td>
+                                </tr>";
                             }
                         } else {
                             echo "<tr><td colspan='7'>Nenhum registro encontrado</td></tr>";
@@ -117,6 +118,28 @@ if (!isset($atual)) {
                     </tbody>
                 </table>
             </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modalAdicionar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalAdicionar()">&times;</span>
+            <h2>Adicionar/Editar Item</h2>
+            <form id="formAdicionarEditar" method="post" action="adicionar_editar_item.php">
+                <input type="hidden" name="idItem" id="modalIdItem">
+                <div>
+                    <label for="modalNomeItem">Nome do Item:</label>
+                    <input type="text" name="nomeItem" id="modalNomeItem" readonly>
+                </div>
+                <div>
+                    <label for="modalQuantidade">Quantidade:</label>
+                    <input type="number" name="quantidade" id="modalQuantidade" required>
+                </div>
+                <div>
+                    <button type="submit" name="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
