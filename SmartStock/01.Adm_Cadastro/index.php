@@ -105,6 +105,8 @@
         $codSetor = $_POST['setor'];
         $status = $_POST['status'];
 
+
+
         // Validação básica de senha
         if ($senha != $confirSenha) {
             echo "<script>
@@ -113,12 +115,15 @@
             </script>";
             exit();
         }
+        //Utiliza função nativa do PHP para cryptograr do lado do servidor.
+        $hash = password_hash($senha, PASSWORD_DEFAULT);
+
 
         // Inserção no banco de dados usando prepared statements
         $sql = "INSERT INTO conta (Email, Senha, Matricula, ContaStatus, FK_DEPARTAMENTO_CodSetor, FK_CARGO_CodCargo) VALUES (?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("ssssii", $email, $senha, $matricula, $status, $codSetor, $codCargo);
+            $stmt->bind_param("ssssii", $email, $hash, $matricula, $status, $codSetor, $codCargo);
 
             try {
                 if ($stmt->execute()) {

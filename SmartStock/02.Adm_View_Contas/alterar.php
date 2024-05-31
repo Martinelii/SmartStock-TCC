@@ -30,12 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Verificar se houve mudanças
     $has_changes = false;
+    $senha_change = false;
+
     if ($old_values['Email'] != $email || 
-        $old_values['Senha'] != $senha || 
         $old_values['Cargo'] != $cargo || 
         $old_values['Setor'] != $setor ||  
         $old_values['ContaStatus'] != $status) {
         $has_changes = true;
+    }
+
+    if( $old_values['Senha'] != $senha){
+        $novoHash = password_hash($senha, PASSWORD_DEFAULT);
+        $senha_change = true;
     }
 
     //Faz Validação para gantir que somente gerente pode ter cargo de aprovador
@@ -43,6 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $funcao = 'NÃO APROVADOR';
     }else{
         $funcao = 'APROVADOR';
+    }
+    if($senha_change === TRUE){
+        $sql_hash = "UPDATE conta SET Senha = ? WHERE Matricula = ?";
+        $stmt_hash = $conn->prepare($sql_hash);
+        $stmt_hash->bind_param("si", $novoHash, $matricula);
+        $stmt_hash->execute();
     }
 
     if ($has_changes) {
