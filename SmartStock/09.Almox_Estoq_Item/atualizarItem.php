@@ -12,6 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $idItem = $_POST['idItem'];
     $quantidade = $_POST['quantidade'];
 
+    //Impede Negativar Estoque
+    if($quantidade < 0){
+        echo "<script>
+        alert('Não é Possivel Negativar Estoque');
+        window.location.href = 'index.php';
+        </script>";
+        exit();
+    }
+
     // Atualiza a quantidade do item no banco de dados
     $sql = "UPDATE item SET Quantidade = ? WHERE ID_Item = ?";
     $stmt = $conn->prepare($sql);

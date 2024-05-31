@@ -21,6 +21,12 @@
     max-width: 500px;
 }
 
+.modal input{
+    margin-bottom: 10px;
+}
+.modal select{
+    margin-bottom: 10px;
+}
 .close {
     color: #aaa;
     float: right;

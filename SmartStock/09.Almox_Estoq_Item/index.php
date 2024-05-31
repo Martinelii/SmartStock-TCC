@@ -125,7 +125,7 @@ if (!isset($atual)) {
         <div class="modal-content">
             <span class="close" onclick="fecharModalAdicionar()">&times;</span>
             <h2>Adicionar/Editar Item</h2>
-            <form id="formAdicionarEditar" method="post" action="adicionar_editar_item.php">
+            <form id="formAdicionarEditar" method="post" action="atualizarItem.php">
                 <input type="hidden" name="idItem" id="modalIdItem">
                 <div>
                     <label for="modalNomeItem">Nome do Item:</label>
