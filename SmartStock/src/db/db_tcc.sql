@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Maio-2024 às 20:56
+-- Tempo de geração: 03-Jun-2024 às 00:55
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -65,9 +65,12 @@ CREATE TABLE `conta` (
 --
 
 INSERT INTO `conta` (`Email`, `Senha`, `Matricula`, `contaStatus`, `FK_DEPARTAMENTO_CodSetor`, `FK_CARGO_CodCargo`) VALUES
-('adm@adm.com', 'adm', 2024001, 'ATIVO', 2, 1),
-('gerente@ti.com', 'ti', 2024002, 'ATIVO', 2, 2),
-('fun@ti.com', 'ti', 2024003, 'ATIVO', 2, 3);
+('adm@adm.com', '$2y$10$18omjDq3FPlno9.KYjNpyeaa4ORKQ9TCkgXMi7gTIuqiBoi.iH4wS', 2024001, 'Ativo', 2, 1),
+('gerente@ti.com', '$2y$10$v2qloQVuZQyS7YE9talDrOPebHwbqjaLUtiTFl7vxSiYujp8yUOwa', 2024002, 'Ativo', 2, 2),
+('fun@ti.com', '$2y$10$2OeKr6CyPuX9EIeFYEXjkOQbBuPkJewwAJlLnJxNlYFxyw/s0KxKC', 2024003, 'Ativo', 2, 3),
+('almo@almo.com', '$2y$10$qUCGahKLLDsOAjzlyPJM0.WXRKz/QJN6sVEOL8Uq3L1eCiXDXHBLe', 2024004, 'Ativo', 1, 5),
+('crypto@teste.com', '$2y$10$UPhGLK8oL1.S9bSQLhpig.rlCtQnoIz8z4K9vlYj41LJXqNhsADpS', 2024024, 'Ativo', 5, 2),
+('adriel@teste.com', '$2y$10$2KhSu42HMEDtJXstC8L8Y.14fO79.QaQv666O4WLZXv6A9Tp5RTqi', 2024098, 'Ativo', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -111,13 +114,14 @@ CREATE TABLE `item` (
 
 INSERT INTO `item` (`ID_Item`, `Quantidade`, `NomeItem`, `DataRecebimento`) VALUES
 (1, 100, 'Caneta Azul', '2024-05-25'),
-(2, 100, 'Caneta Preta', '2024-05-30'),
+(2, 95, 'Caneta Preta', '2024-05-30'),
 (3, 100, 'Caneta Vermelha', '2024-05-30'),
 (4, 100, 'Pacote Folha A4', '2024-05-30'),
-(5, 100, 'Borracha', '2024-05-30'),
+(5, 98, 'Borracha', '2024-05-30'),
 (6, 100, 'Lapis', '2024-05-30'),
 (7, 50, 'Servo-Motor Nema 17', '2024-05-30'),
-(8, 25, 'Sensor de Movimento', '2024-05-30');
+(8, 25, 'Sensor de Movimento', '2024-05-30'),
+(9, 100, 'Pacote Folha A3', '2024-05-30');
 
 -- --------------------------------------------------------
 
@@ -142,7 +146,10 @@ CREATE TABLE `requisicao` (
 --
 
 INSERT INTO `requisicao` (`QuantidadeItem`, `CargoFuncionario`, `ID_Solicitacao`, `NomeItem`, `SetorFuncionario`, `StatusSolicitacao`, `DataSolicitacao`, `FK_ITEM_ID_Item`, `FK_CONTA_Matricula`) VALUES
-(1, 'ANALISTA', 1, 'Caneta Azul', 'T.I', 'ABERTA', '2024-05-30 03:00:00', 1, 2024003);
+(10, 'ANALISTA', 10, 'Caneta Azul', 'T.I', 'RECUSADA', '2024-05-31 20:45:59', 1, 2024003),
+(5, 'ANALISTA', 11, 'Caneta Preta', 'T.I', 'FINALIZADA', '2024-05-30 22:11:48', 2, 2024003),
+(2, 'ANALISTA', 12, 'Borracha', 'T.I', 'FINALIZADA', '2024-05-31 20:53:32', 5, 2024003),
+(10, 'ANALISTA', 13, 'Pacote Folha A3', 'T.I', 'ABERTA', '2024-05-31 20:45:28', 9, 2024003);
 
 --
 -- Índices para tabelas despejadas
@@ -202,13 +209,13 @@ ALTER TABLE `departamento`
 -- AUTO_INCREMENT de tabela `item`
 --
 ALTER TABLE `item`
-  MODIFY `ID_Item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_Item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `requisicao`
 --
 ALTER TABLE `requisicao`
-  MODIFY `ID_Solicitacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_Solicitacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restrições para despejos de tabelas
