@@ -1,5 +1,6 @@
 <?php
 function realizarLogin($email, $senha, $conn) {
+    include_once '../src/php/log.php'; // Inclui o arquivo de log
 
     $sql = "SELECT c.email, c.senha, c.matricula, c.FK_CARGO_CodCargo, c.FK_DEPARTAMENTO_CodSetor, c.contastatus AS contastatus,
     cr.Cargo AS cargo_nome, cr.Funcao AS cargo_funcao, d.Setor AS setor_nome
@@ -16,6 +17,7 @@ function realizarLogin($email, $senha, $conn) {
         
         // Verifique se a conta está ativa
         if ($row["contastatus"] === 'Inativo') {
+            registrarLog('Tentativa de login falhou', "Conta inativa - Email: $email");
             echo "Conta de usuário desativada.";
             return false;
         }
@@ -33,7 +35,10 @@ function realizarLogin($email, $senha, $conn) {
             $_SESSION['nomeCargo'] = $row['cargo_nome'];
             $_SESSION['cargoFuncao'] = $row['cargo_funcao'];
             $_SESSION['nomeSetor'] = $row['setor_nome'];
-            
+
+            // Registrar login bem-sucedido
+            registrarLog('Login bem-sucedido', "Email: $email");
+
             // Redirecione com base nas permissões do usuário
             if ($_SESSION['cargoFuncao'] === 'APROVADOR' && $_SESSION['nomeSetor'] != 'Almoxarifado') {
                 header("Location: ../05.Aprovador_Inicial_Aprovar/index.php");
@@ -46,9 +51,11 @@ function realizarLogin($email, $senha, $conn) {
             }
             exit();
         } else {
+            registrarLog('Tentativa de login falhou', "Senha incorreta - Email: $email");
             return false;
         }
     } else {
+        registrarLog('Tentativa de login falhou', "Email não encontrado - Email: $email");
         return false;
     }
 }

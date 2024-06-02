@@ -13,7 +13,8 @@
         <ul>
             <?php
             session_start();
-            include '../src/db/db_connection.php';
+            include_once '../src/php/log.php'; 
+            include_once '../src/db/db_connection.php';
             $atual = $_SESSION['matricula'];
 
             // Verifica se o usuário está logado
@@ -127,6 +128,7 @@
 
             try {
                 if ($stmt->execute()) {
+                    registrarLog('SUCESSO - Cadastro de Conta', "Matricula Cadastrada: $matricula, Status: $status");
                     echo "<script>
                     alert('Cadastro Efetuado com Sucesso');
                     window.location.href = 'index.php';

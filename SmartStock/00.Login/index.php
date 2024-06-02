@@ -35,10 +35,11 @@
     </div>
 
     <?php
-    include '../src/db/db_connection.php';
-    include 'validacao.php'; // Inclui o arquivo de validação
+    include_once '../src/db/db_connection.php';
+    include_once 'validacao.php'; // Inclui o arquivo de validação
+    include_once '../src/php/log.php'; // Inclui o arquivo de log
 
-    if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
         $email = $_POST['email'];
         $senha = $_POST['password'];
 
@@ -46,6 +47,8 @@
         $loginSucesso = realizarLogin($email, $senha, $conn);
 
         if (!$loginSucesso) {
+            // Registrar a tentativa de login falhada
+            registrarLog('Tentativa de login falhou', "Email: $email");
             // Usuário não encontrado ou senha incorreta
             echo "<script>
             alert('Usuario não encontrado ou Credencias de acesso invalidas!!');
