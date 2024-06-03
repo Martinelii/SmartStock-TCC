@@ -30,18 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Verificar se houve mudanças
     $has_changes = false;
-    $senha_change = false;
+    
 
     if ($old_values['Email'] != $email || 
         $old_values['Cargo'] != $cargo || 
         $old_values['Setor'] != $setor ||  
-        $old_values['ContaStatus'] != $status) {
+        $old_values['ContaStatus'] != $status || 
+        $old_values['Senha'] != $senha) {
         $has_changes = true;
-    }
-
-    if( $old_values['Senha'] != $senha){
-        $novoHash = password_hash($senha, PASSWORD_DEFAULT);
-        $senha_change = true;
     }
 
     //Faz Validação para gantir que somente gerente pode ter cargo de aprovador
@@ -57,13 +53,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt_hash->execute();
     }
 
-    if ($has_changes) {
-        // Atualizar a tabela conta
-        $sql_conta = "UPDATE conta SET Email = ?, Senha = ?, ContaStatus = ? WHERE Matricula = ?";
-        $stmt_conta = $conn->prepare($sql_conta);
-        $stmt_conta->bind_param("sssi", $email, $senha, $status, $matricula);
-        $stmt_conta->execute();
-
+    if ($has_changes === TRUE) {
+        if($old_values['Senha'] != $senha){
+            $novoHash = password_hash($senha, PASSWORD_DEFAULT);
+            // Atualizar a tabela conta e Cryptografa senha
+            $sql_conta = "UPDATE conta SET Email = ?, Senha = ?, ContaStatus = ? WHERE Matricula = ?";
+            $stmt_conta = $conn->prepare($sql_conta);
+            $stmt_conta->bind_param("sssi", $email, $novoHash, $status, $matricula);
+            $stmt_conta->execute();
+        }else{
+            // Atualizar a tabela conta
+            $sql_conta = "UPDATE conta SET Email = ?, Senha = ?, ContaStatus = ? WHERE Matricula = ?";
+            $stmt_conta = $conn->prepare($sql_conta);
+            $stmt_conta->bind_param("sssi", $email, $senha, $status, $matricula);
+            $stmt_conta->execute();
+        }
         // Obter os IDs do cargo e setor
         $sql_cargo = "SELECT CodCargo FROM cargo WHERE Cargo = ? AND Funcao = ?";
         $stmt_cargo = $conn->prepare($sql_cargo);
