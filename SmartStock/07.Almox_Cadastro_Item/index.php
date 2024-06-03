@@ -15,6 +15,7 @@
     $atual = $_SESSION['matricula'];
     $setor_session = $_SESSION['nomeSetor'];
 
+    include_once '../src/php/log.php'; // Inclui o arquivo de log
     include '../src/db/db_connection.php';
   
 
@@ -33,13 +34,25 @@
 
         $sql = "INSERT INTO item (NomeItem, Quantidade, DataRecebimento) VALUES ('$item', '$quantidade', '$dataRecebimento')";
 
+
         
         if ($conn->query($sql) === TRUE) {
+            // Obter o ID do item recém-inserido
+            $sqlId = "SELECT ID_Item FROM item WHERE NomeItem = '$item' AND Quantidade = '$quantidade' AND DataRecebimento = '$dataRecebimento' LIMIT 1";
+            $result = $conn->query($sqlId);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $idItem = $row['ID_Item'];
+
+            registrarLog('Cadastrar Item', "ID: $idItem, Item: $item, Quantidade: $quantidade");
+        }
             echo "<script>
             alert('Cadastro realizado com sucesso!');
             window.location.href = 'index.php';
             </script>";
         } else {
+            registrarLog('Cadastrar Item', "ERRO");
             echo "<script>
             alert('Erro ao cadastrar:  . $conn->error');
             window.location.href = 'index.php';

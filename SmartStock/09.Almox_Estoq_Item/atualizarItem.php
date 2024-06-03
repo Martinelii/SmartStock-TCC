@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../src/db/db_connection.php';
+include_once '../src/php/log.php'; // Inclui o arquivo de log
 
 if (!isset($_SESSION['matricula'])) {
     header("Location: ../00.Login/index.php");
@@ -27,11 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $stmt->bind_param('ii', $quantidade, $idItem);
 
     if ($stmt->execute()) {
+        registrarLog('Quantidade Item Atualizada',"ID Item: $idItem, Quantidade: $quantidade");
         echo "<script>
         alert('Item atualizado com sucesso.');
         window.location.href = 'index.php';
         </script>";
     } else {
+        registrarLog('Atualizar Quantidade Item'," FALHA - ID Item: $idItem");
         echo "<script>
         alert('Erro ao atualizar o item: ' . $stmt->error);
         window.location.href = 'index.php';
