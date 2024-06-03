@@ -33,7 +33,11 @@
 
             // Gera links de navegação 
             foreach ($menu_items as $label => $url) {
-                echo '<li><a href="' . $url . '">' . $label . '</a></li>';
+                if ($label == $atual) {
+                    echo '<li>' . $label . '</li>';
+                } else {
+                    echo '<li><a href="' . $url . '">' . $label . '</a></li>';
+                }
             }
             ?>
         </ul>
