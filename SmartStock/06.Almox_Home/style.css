@@ -11,14 +11,20 @@ nav ul {
 nav ul li {
     display: inline;
     margin-right: 10px;
+    color: white;
 }
+
 nav ul li a {
     color: #fff;
     text-decoration: none;
     padding: 5px 10px;
+    color: white;
+            text-decoration: none; 
 }
+
 nav ul li a:hover {
     background-color: #555;
+    color: lightgray; 
 }
 .container {
     max-width: 900px;
