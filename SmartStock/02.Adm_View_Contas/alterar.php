@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../src/db/db_connection.php';
+include '../src/php/log.php'; // Inclui o arquivo de log
 
 if (!isset($_SESSION['matricula'])) {
     header("Location: ../00.Login/index.php");
@@ -30,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Verificar se houve mudanças
     $has_changes = false;
-    
 
     if ($old_values['Email'] != $email || 
         $old_values['Cargo'] != $cargo || 
@@ -40,34 +40,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $has_changes = true;
     }
 
-    //Faz Validação para gantir que somente gerente pode ter cargo de aprovador
-    if($cargo != 'GERENTE'){
+    // Faz Validação para garantir que somente gerente pode ter cargo de aprovador
+    if ($cargo != 'GERENTE') {
         $funcao = 'NÃO APROVADOR';
-    }else{
+    } else {
         $funcao = 'APROVADOR';
-    }
-    if($senha_change === TRUE){
-        $sql_hash = "UPDATE conta SET Senha = ? WHERE Matricula = ?";
-        $stmt_hash = $conn->prepare($sql_hash);
-        $stmt_hash->bind_param("si", $novoHash, $matricula);
-        $stmt_hash->execute();
     }
 
     if ($has_changes === TRUE) {
-        if($old_values['Senha'] != $senha){
+        if ($old_values['Senha'] != $senha) {
             $novoHash = password_hash($senha, PASSWORD_DEFAULT);
             // Atualizar a tabela conta e Cryptografa senha
             $sql_conta = "UPDATE conta SET Email = ?, Senha = ?, ContaStatus = ? WHERE Matricula = ?";
             $stmt_conta = $conn->prepare($sql_conta);
             $stmt_conta->bind_param("sssi", $email, $novoHash, $status, $matricula);
-            $stmt_conta->execute();
-        }else{
+        } else {
             // Atualizar a tabela conta
             $sql_conta = "UPDATE conta SET Email = ?, Senha = ?, ContaStatus = ? WHERE Matricula = ?";
             $stmt_conta = $conn->prepare($sql_conta);
             $stmt_conta->bind_param("sssi", $email, $senha, $status, $matricula);
-            $stmt_conta->execute();
         }
+
+        if ($stmt_conta->execute()) {
+            registrarLog('SUCESSO - Atualizar Conta', "Conta de matrícula $matricula atualizada com sucesso: Email de {$old_values['Email']} para $email, Status de {$old_values['ContaStatus']} para $status.");
+        } else {
+            registrarLog('ERRO - Atualizar Conta', "Erro ao atualizar conta de matrícula $matricula: " . $stmt_conta->error);
+        }
+
         // Obter os IDs do cargo e setor
         $sql_cargo = "SELECT CodCargo FROM cargo WHERE Cargo = ? AND Funcao = ?";
         $stmt_cargo = $conn->prepare($sql_cargo);
@@ -87,11 +86,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql_update_fk = "UPDATE conta SET FK_CARGO_CodCargo = ?, FK_DEPARTAMENTO_CodSetor = ? WHERE Matricula = ?";
         $stmt_update_fk = $conn->prepare($sql_update_fk);
         $stmt_update_fk->bind_param("iii", $cargo_id, $setor_id, $matricula);
-        $stmt_update_fk->execute();
 
-        if ($stmt_conta->affected_rows > 0 && $stmt_update_fk->affected_rows > 0) {
+        if ($stmt_update_fk->execute()) {
+            registrarLog('SUCESSO - Atualizar Conta', "Cargo de {$old_values['Cargo']} para $cargo e Setor de {$old_values['Setor']} para $setor conta de matrícula $matricula.");
             header("Location: ../02.Adm_View_Contas/index.php?success=1");
         } else {
+            registrarLog('ERRO - Atualizar Conta', "Erro ao atualizar FK para a conta de matrícula $matricula: " . $stmt_update_fk->error);
             header("Location: ../02.Adm_View_Contas/index.php?error=1");
         }
 
@@ -101,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt_update_fk->close();
     } else {
         // Nenhuma mudança, apenas fechar o modal
+        registrarLog('INFO - Atualizar Conta', "Nenhuma mudança detectada para a conta de matrícula $matricula.");
         header("Location: ../02.Adm_View_Contas/index.php?nochange=1");
     }
 

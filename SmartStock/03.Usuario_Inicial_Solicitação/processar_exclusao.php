@@ -2,6 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+include '../src/php/log.php'; // Inclui o arquivo de log
 include '../src/db/db_connection.php';
 
 if (isset($_POST['id'])) {
@@ -12,8 +13,10 @@ if (isset($_POST['id'])) {
     $stmt->bind_param("i", $idSolicitacao);
 
     if ($stmt->execute()) {
+        registrarLog('SUCESSO - Excluir Requisição', "$idSolicitacao");
         echo "success";
     } else {
+        registrarLog('ERRO - Excluir Requisição', "$idSolicitacao");
         echo "error";
     }
 

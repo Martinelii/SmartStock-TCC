@@ -3,6 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 include '../src/db/db_connection.php';
+include '../src/php/log.php'; // Inclui o arquivo de log
 
 date_default_timezone_set('America/Sao_Paulo');
 
@@ -22,6 +23,7 @@ if (isset($_POST['submit'])) {
     $dataSolicitacao = date('Y-m-d H:i:s'); // Obtém a data e hora atuais
 
     if ($quantidade <= 0) {
+        registrarLog('ERRO - Efetuar Requisição', "Quantidade $quantidade Inválida!!");
         echo "<script>
         alert('Selecione uma quantidade válida!!');
         window.location.href = 'index.php';
@@ -36,6 +38,7 @@ if (isset($_POST['submit'])) {
         $row_item = $result_item->fetch_assoc();
         $item_id = $row_item['ID_Item'];
     } else {
+        registrarLog('ERRO - Efetuar Requisição', "Item $item não encontrado!!");
         echo "<script>
         alert('Item não encontrado.');
         window.location.href = 'index.php';
@@ -53,6 +56,7 @@ if (isset($_POST['submit'])) {
 
         // Verifica se a quantidade solicitada é menor ou igual à quantidade disponível
         if ($quantidade > $quantidade_disponivel) {
+            registrarLog('ERRO - Efetuar Requisição', "Quantidade $quantidade excedente ao Estoque!!");
             echo "<script>
             alert('Quantidade solicitada excede a quantidade disponível.');
             window.location.href = 'index.php';
@@ -65,11 +69,29 @@ if (isset($_POST['submit'])) {
                        VALUES ('$quantidade', '$cargo', '$item', '$setor', '$status', '$dataSolicitacao', '$item_id', '$matricula')";
 
         if ($conn->query($sql_insert) === TRUE) {
-            echo "<script>
-            alert('Requisição inserida com sucesso.');
-            window.location.href = 'index.php';
-            </script>";
+            // Obtém o ID da requisição recém-inserida
+            $sqlReq = "SELECT ID_Solicitacao FROM requisicao
+                       WHERE FK_CONTA_Matricula = '$matricula' AND NomeItem = '$item' AND QuantidadeItem = '$quantidade' AND DataSolicitacao = '$dataSolicitacao' LIMIT 1";
+            $resultReq = $conn->query($sqlReq);
+
+            if ($resultReq->num_rows > 0) {
+                $rowReq = $resultReq->fetch_assoc();
+                $idRequisicao = $rowReq['ID_Solicitacao'];
+
+                registrarLog('SUCESSO - Efetuar Requisição', "Requisição $idRequisicao, Item $item");
+                echo "<script>
+                alert('Requisição inserida com sucesso.');
+                window.location.href = 'index.php';
+                </script>";
+            } else {
+                registrarLog('ERRO - Efetuar Requisição', "Não foi possível obter o ID da requisição.");
+                echo "<script>
+                alert('Erro ao inserir requisição.');
+                window.location.href = 'index.php';
+                </script>";
+            }
         } else {
+            registrarLog('ERRO - Efetuar Requisição', "Erro ao inserir requisição: " . $conn->error);
             echo "<script>
             alert('Erro ao inserir requisição: " . $conn->error . "');
             window.location.href = 'index.php';
@@ -93,6 +115,7 @@ if (isset($_POST['editar'])) {
         $row_item = $result_item->fetch_assoc();
         $item_id = $row_item['ID_Item'];
     } else {
+        registrarLog('ERRO - Editar Requisição', "Item $item não encontrado!!");
         echo "<script>
         alert('Item não encontrado.');
         window.location.href = 'index.php';
@@ -110,6 +133,7 @@ if (isset($_POST['editar'])) {
 
         // Verifica se a quantidade solicitada é menor ou igual à quantidade disponível
         if ($quantidade > $quantidade_disponivel) {
+            registrarLog('ERRO - Editar Requisição', "Quantidade $quantidade excedente ao Estoque!!");
             echo "<script>
             alert('Quantidade solicitada excede a quantidade disponível.');
             window.location.href = 'index.php';
@@ -121,11 +145,13 @@ if (isset($_POST['editar'])) {
     // Atualizar a quantidade e o nome do item no banco de dados
     $sql = "UPDATE requisicao SET QuantidadeItem = '$quantidade', NomeItem = '$item' WHERE ID_Solicitacao = '$id_solicitacao'";
     if ($conn->query($sql) === TRUE) {
+        registrarLog('SUCESSO - Editar Requisição', "Requisição $id_solicitacao editada com sucesso.");
         echo "<script>
         alert('Dados atualizados com sucesso.');
         window.location.href = 'index.php';
         </script>";
     } else {
+        registrarLog('ERRO - Editar Requisição', "Erro ao atualizar requisição: " . $conn->error);
         echo "<script>
         alert('Erro ao atualizar a requisição: " . $conn->error . "');
         window.location.href = 'index.php';

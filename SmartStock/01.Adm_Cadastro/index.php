@@ -141,6 +141,7 @@
                     throw new Exception("Erro ao executar o comando SQL");
                 }
             } catch (Exception $e) {
+                registrarLog('ERRO - Cadastro de Conta', "Inserção Incorreta");
                 echo "<script>
                 alert('ERRO DURANTE CADASTRO. Por favor, se os campos foram inseridos corretamente.');
                 window.location.href = 'index.php';
@@ -149,6 +150,7 @@
 
             $stmt->close();
         } else {
+            registrarLog('ERRO - Cadastro de Conta', "Falha Comando SQL");
             echo "<script>
             alert('ERRO AO PREPARAR COMANDO SQL. Por favor, tente novamente.');
             window.location.href = 'index.php';

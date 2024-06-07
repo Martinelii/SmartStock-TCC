@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../src/db/db_connection.php';
+include '../src/php/log.php'; // Inclui o arquivo de log
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_solicitacao = $_POST['id_solicitacao'];
@@ -12,11 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt_update_status->bind_param('si', $acao, $id_solicitacao);
 
     if ($stmt_update_status->execute()) {
+        registrarLog('SUCESSO - Recusar Solicitação', "Solicitação $id_solicitacao Recusada!!");
         echo "<script>
         alert('Solicitação Recusada com sucesso!');
         window.location.href = 'index.php';
         </script>";
     } else {
+        registrarLog('ERRO - Recusar Solicitação', "Solicitação $id_solicitacao, erro na comunicação com servidor!!");
         echo "<script>
         alert('Erro ao Recusar a solicitação: . $conn->error');
         window.location.href = 'index.php';

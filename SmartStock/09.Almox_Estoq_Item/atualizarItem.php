@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 
     //Impede Negativar Estoque
     if($quantidade < 0){
+        registrarLog('ERRO - Atualizar Quantidade Item',"Tentatica de Negativar - Item $idItem, Quantidade: $quantidade");
         echo "<script>
         alert('Não é Possivel Negativar Estoque');
         window.location.href = 'index.php';
@@ -28,13 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $stmt->bind_param('ii', $quantidade, $idItem);
 
     if ($stmt->execute()) {
-        registrarLog('Quantidade Item Atualizada',"ID Item: $idItem, Quantidade: $quantidade");
+        registrarLog('SUCESSO - Quantidade Item Atualizada',"ID Item: $idItem, Quantidade: $quantidade");
         echo "<script>
         alert('Item atualizado com sucesso.');
         window.location.href = 'index.php';
         </script>";
     } else {
-        registrarLog('Atualizar Quantidade Item'," FALHA - ID Item: $idItem");
+        registrarLog('ERRO - Atualizar Quantidade Item',"ID Item: $idItem");
         echo "<script>
         alert('Erro ao atualizar o item: ' . $stmt->error);
         window.location.href = 'index.php';

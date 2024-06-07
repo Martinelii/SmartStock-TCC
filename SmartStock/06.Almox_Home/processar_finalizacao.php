@@ -1,6 +1,8 @@
 <?php
 session_start();
 include '../src/db/db_connection.php';
+include_once '../src/php/log.php'; // Inclui o arquivo de log
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_solicitacao = $_POST['id_solicitacao'];
@@ -33,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt_atualiza_solicitacao->execute();
         $stmt_atualiza_solicitacao->close();
 
-        echo "Solicitação {$acao} com sucesso!";
+        registrarLog('SUCESSO - Finalizar Requisição',"Solicitação $id_solicitacao Item $item, Quantidade $quantidade_solicitada");
+
     } else {
         // Atualiza o status da solicitação para "INSUFICIENTE"
         $acao_insuficiente = 'INSUFICIENTE';
@@ -43,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt_atualiza_solicitacao->execute();
         $stmt_atualiza_solicitacao->close();
 
+        registrarLog('ERRO - Finalizar Requisição',"Solicitação $id_solicitacao finalizada por Quantidade solicitada $quantidade_solicitada, Em estoque $quantidade_estoque INSUFICIENTE do Item $item");
         echo "<script>
                 alert('Quantidade insuficiente no estoque. Solicitação marcada como INSUFICIENTE.');
                 window.location.href = 'index.php';

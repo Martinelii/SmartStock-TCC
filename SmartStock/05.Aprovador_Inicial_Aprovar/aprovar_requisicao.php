@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../src/db/db_connection.php';
+include '../src/php/log.php'; // Inclui o arquivo de log
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_solicitacao = $_POST['id_solicitacao'];
@@ -30,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if ($quantidade_solicitada > $quantidade_estoque) {
                 // Quantidade solicitada excede o estoque disponível, recusar automaticamente
+                registrarLog('ERRO - Aprovar Solicitação', "Requisição $id_solicitacao RECUSADA, Quantidade $quantidade_solicitada excede estoque");
                 echo "Quantidade solicitada excede o estoque disponível. Solicitação recusada automaticamente.";
                 $acao = 'RECUSADA';
             } else {
@@ -38,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $stmt_get_stock->close();
         } else {
+            registrarLog('ERRO - Aprovar Solicitação', "Item ID $id_item  não encontrado no estoque");
             echo "<script>
             alert('Item não encontrado no estoque.');
             window.location.href = 'index.php';
@@ -45,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
     } else {
+        registrarLog('ERRO - Aprovar Solicitação', "Solicitação $id_solicitacao não encontrada!!");
         echo "<script>
         alert('Solicitação não encontrada.');
         window.location.href = 'index.php';
@@ -61,12 +65,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt_update_status->bind_param('si', $acao, $id_solicitacao);
 
     if ($stmt_update_status->execute()) {
+        registrarLog('SUCESSO - Aprovar Solicitação', "Solicitação $id_solicitacao Aprovada!!");
         echo "<script>
         alert('Solicitação Aprovada com sucesso!');
         window.location.href = 'index.php';
         </script>";
         
     } else {
+        registrarLog('ERRO - Aprovar Solicitação', "Solicitação $id_solicitacao erro de comunicação com sevidor!!");
         echo "<script>
         alert('Erro ao Aprovar a solicitação: . $conn->error');
         window.location.href = 'index.php';
