@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="../src/css/font.css">
     <link rel="stylesheet" href="style.css">
     <title>Smart Stock - Cadastro</title>
+    <script>
+        function validateEmail() {
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                alert('Por favor, insira um email válido.');
+                return false;
+            }
+            return true;
+        }
+
+        function validateForm() {
+            const senha = document.getElementById('password').value;
+            const confirSenha = document.getElementById('confirpassword').value;
+            if (senha !== confirSenha) {
+                alert('Senhas Incompatíveis');
+                return false;
+            }
+            return validateEmail();
+        }
+    </script>
 </head>
 <body>
     <nav>
@@ -45,7 +66,7 @@
     <div class="container">
         <div class="boxform">
             <header>Cadastrar</header>
-            <form action="" method="post">
+            <form action="" method="post" onsubmit="return validateForm()">
                 <div class="input ">
                     <label for="inpMatricula">Matricula</label>
                     <input class="inpMatricula" type="text" name="inpMatricula" id="inpMatricula" required>
@@ -110,19 +131,26 @@
         $codSetor = $_POST['setor'];
         $status = $_POST['status'];
 
-
-
         // Validação básica de senha
         if ($senha != $confirSenha) {
             echo "<script>
-            alert('Senhas Incompativeis');
+            alert('Senhas Incompatíveis');
             window.location.href = 'index.php';
             </script>";
             exit();
         }
-        //Utiliza função nativa do PHP para cryptograr do lado do servidor.
-        $hash = password_hash($senha, PASSWORD_DEFAULT);
 
+        // Validação de email no backend
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "<script>
+            alert('Por favor, insira um email válido.');
+            window.location.href = 'index.php';
+            </script>";
+            exit();
+        }
+
+        // Utiliza função nativa do PHP para criptografar a senha do lado do servidor.
+        $hash = password_hash($senha, PASSWORD_DEFAULT);
 
         // Inserção no banco de dados usando prepared statements
         $sql = "INSERT INTO conta (Email, Senha, Matricula, ContaStatus, FK_DEPARTAMENTO_CodSetor, FK_CARGO_CodCargo) VALUES (?, ?, ?, ?, ?, ?)";
@@ -143,7 +171,7 @@
             } catch (Exception $e) {
                 registrarLog('ERRO - Cadastro de Conta', "Inserção Incorreta");
                 echo "<script>
-                alert('ERRO DURANTE CADASTRO. Por favor, se os campos foram inseridos corretamente.');
+                alert('ERRO DURANTE CADASTRO. Por favor, verifique se os campos foram inseridos corretamente.');
                 window.location.href = 'index.php';
                 </script>";
             }
