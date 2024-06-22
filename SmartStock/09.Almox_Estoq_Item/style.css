@@ -117,3 +117,27 @@ h4 {
     border-bottom: 1px solid black;
     margin-bottom: 10px;
 }
+/* Adicionando a media query para dispositivos móveis */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    .row {
+        margin-bottom: 10px;
+    }
+    .col-6, .col-12 {
+        width: 100%;
+    }
+    .dataGrid {
+        overflow-x: auto;
+    }
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    th, td {
+        white-space: nowrap;
+    }
+}
+

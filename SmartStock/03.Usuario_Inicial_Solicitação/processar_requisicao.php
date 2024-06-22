@@ -46,6 +46,20 @@ if (isset($_POST['submit'])) {
         exit();
     }
 
+    // Calcular média diária e mensal de uso do item
+    $sql_media_diaria = "SELECT AVG(QuantidadeItem) AS media_diaria FROM requisicao WHERE FK_ITEM_ID_Item = '$item_id' AND DataSolicitacao >= DATE_SUB(NOW(), INTERVAL 1 DAY)";
+    $result_media_diaria = $conn->query($sql_media_diaria);
+    $media_diaria = ($result_media_diaria->num_rows > 0) ? $result_media_diaria->fetch_assoc()['media_diaria'] : 0;
+
+    $sql_media_mensal = "SELECT AVG(QuantidadeItem) AS media_mensal FROM requisicao WHERE FK_ITEM_ID_Item = '$item_id' AND DataSolicitacao >= DATE_SUB(NOW(), INTERVAL 1 MONTH)";
+    $result_media_mensal = $conn->query($sql_media_mensal);
+    $media_mensal = ($result_media_mensal->num_rows > 0) ? $result_media_mensal->fetch_assoc()['media_mensal'] : 0;
+
+    // Verifica se a quantidade solicitada excede a média diária ou mensal
+    if ($quantidade > $media_diaria || $quantidade > $media_mensal) {
+        registrarLog('ALERTA - Efetuar Requisição', "Quantidade $quantidade excede a média diária ($media_diaria) ou mensal ($media_mensal) de uso do item $item");
+    }
+
     // Verifica a quantidade disponível do item
     $sql_quantidade_disponivel = "SELECT Quantidade FROM item WHERE ID_Item = '$item_id'";
     $result_quantidade_disponivel = $conn->query($sql_quantidade_disponivel);

@@ -91,3 +91,25 @@ th {
     background-color: #43766c;
     color: white;
 }
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    .row {
+        margin-bottom: 10px;
+    }
+    .col-6, .col-12 {
+        width: 100%;
+    }
+    .dataGrid {
+        overflow-x: auto;
+    }
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    th, td {
+        white-space: nowrap;
+    }
+}

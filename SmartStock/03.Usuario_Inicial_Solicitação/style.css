@@ -1,3 +1,4 @@
+/* Estilos existentes */
 nav {
     background-color: #43766c;
     padding: 10px 0;
@@ -13,15 +14,13 @@ nav ul li {
     margin-right: 10px;
     color: white;
 }
-
 nav ul li a {
     color: #fff;
     text-decoration: none;
     padding: 5px 10px;
     color: white;
-            text-decoration: none; 
+    text-decoration: none; 
 }
-
 nav ul li a:hover {
     background-color: #555;
     color: lightgray; 
@@ -89,4 +88,28 @@ th, td {
 th {
     background-color: #43766c;
     color: white;
+}
+
+/* Novos estilos para responsividade */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    .row {
+        margin-bottom: 10px;
+    }
+    .col-6 {
+        width: 100%;
+    }
+    .col-12 {
+        width: 100%;
+    }
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    th, td {
+        white-space: nowrap;
+    }
 }
