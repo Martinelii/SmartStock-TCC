@@ -90,3 +90,6 @@
 [2024-06-22 18:03:03] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
 [2024-06-22 18:04:51] Matricula: 2024004 - Ação: Login bem-sucedido - Detalhes: Email: almo@almo.com
 [2024-06-22 18:05:10] Matricula: 2024004 - Ação: SUCESSO - Quantidade Item Atualizada - Detalhes: ID Item: 1, Quantidade: 200
+[2024-06-22 18:29:51] Matricula: 2024003 - Ação: Login bem-sucedido - Detalhes: Email: fun@ti.com
+[2024-06-22 18:30:01] Matricula: 2024003 - Ação: ALERTA - Efetuar Requisição - Detalhes: Quantidade 30 excede a média diária () ou mensal (10.0000) de uso do item Pacote Folha A4
+[2024-06-22 18:30:01] Matricula: 2024003 - Ação: SUCESSO - Efetuar Requisição - Detalhes: Requisição 22, Item Pacote Folha A4
