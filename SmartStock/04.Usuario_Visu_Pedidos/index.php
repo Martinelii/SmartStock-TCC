@@ -129,7 +129,7 @@
                         $sql .= " AND StatusSolicitacao = '$statusSolic'";
                     }
                     if(!empty($dataRet)){
-                        $sql .= " AND DataSolicitacao = '$dataRet'";
+                        $sql .= " AND DATE(DataSolicitacao) = '$dataRet'";
                     }
 
 

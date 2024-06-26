@@ -93,3 +93,39 @@
 [2024-06-22 18:29:51] Matricula: 2024003 - Ação: Login bem-sucedido - Detalhes: Email: fun@ti.com
 [2024-06-22 18:30:01] Matricula: 2024003 - Ação: ALERTA - Efetuar Requisição - Detalhes: Quantidade 30 excede a média diária () ou mensal (10.0000) de uso do item Pacote Folha A4
 [2024-06-22 18:30:01] Matricula: 2024003 - Ação: SUCESSO - Efetuar Requisição - Detalhes: Requisição 22, Item Pacote Folha A4
+[2024-06-26 19:41:14] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-06-26 19:42:30] Matricula: 2024003 - Ação: Login bem-sucedido - Detalhes: Email: fun@ti.com
+[2024-06-26 19:44:24] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-06-26 20:24:00] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-06-26 20:29:37] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-06-26 20:30:39] Matricula: 2024001 - Ação: SUCESSO - Cadastro de Conta - Detalhes: Matricula Cadastrada: 2024060026, Status: Ativo
+[2024-06-26 20:31:57] Matricula: 2024001 - Ação: SUCESSO - Atualizar Conta - Detalhes: Conta de matrícula 2024060026 atualizada com sucesso: Email de keven@gmail.com para keven@gmail.com, Status de Ativo para Inativo.
+[2024-06-26 20:31:57] Matricula: 2024001 - Ação: SUCESSO - Atualizar Conta - Detalhes: Cargo de ANALISTA para OPERADOR e Setor de VENDAS para PRODUÇÃO conta de matrícula 2024060026.
+[2024-06-26 20:32:18] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Conta inativa - Email: keven@gmail.com
+[2024-06-26 20:32:18] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: keven@gmail.com
+[2024-06-26 20:32:34] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Conta inativa - Email: keven@gmail.com
+[2024-06-26 20:32:34] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: keven@gmail.com
+[2024-06-26 20:32:47] Matricula: 2024003 - Ação: Login bem-sucedido - Detalhes: Email: fun@ti.com
+[2024-06-26 20:33:09] Matricula: 2024003 - Ação: ALERTA - Efetuar Requisição - Detalhes: Quantidade 9999 excede a média diária () ou mensal (2.0000) de uso do item Borracha
+[2024-06-26 20:33:09] Matricula: 2024003 - Ação: ERRO - Efetuar Requisição - Detalhes: Quantidade 9999 excedente ao Estoque!!
+[2024-06-26 20:33:19] Matricula: 2024003 - Ação: ALERTA - Efetuar Requisição - Detalhes: Quantidade 9 excede a média diária () ou mensal (2.0000) de uso do item Borracha
+[2024-06-26 20:33:19] Matricula: 2024003 - Ação: SUCESSO - Efetuar Requisição - Detalhes: Requisição 23, Item Borracha
+[2024-06-26 20:33:34] Matricula: 2024003 - Ação: SUCESSO - Editar Requisição - Detalhes: Requisição 23 editada com sucesso.
+[2024-06-26 20:33:41] Matricula: 2024003 - Ação: SUCESSO - Excluir Requisição - Detalhes: 22
+[2024-06-26 20:35:03] Matricula: 2024002 - Ação: Login bem-sucedido - Detalhes: Email: gerente@ti.com
+[2024-06-26 20:35:14] Matricula: 2024002 - Ação: SUCESSO - Aprovar Solicitação - Detalhes: Solicitação 23 Aprovada!!
+[2024-06-26 20:36:04] Matricula: 2024004 - Ação: Login bem-sucedido - Detalhes: Email: almo@almo.com
+[2024-06-26 20:37:19] Matricula: 2024004 - Ação: SUCESSO - Finalizar Requisição - Detalhes: Solicitação 23 Item Borracha, Quantidade 1
+[2024-06-26 20:38:22] Matricula: 2024004 - Ação: Cadastrar Item - Detalhes: ID: 13, Item: Regua 30cm, Quantidade: 30
+[2024-06-26 20:39:56] Matricula: 2024004 - Ação: Cadastrar Item - Detalhes: ID: 14, Item: Cx. Grampo, Quantidade: 10
+[2024-06-26 20:40:15] Matricula: 2024003 - Ação: Login bem-sucedido - Detalhes: Email: fun@ti.com
+[2024-06-26 20:40:23] Matricula: 2024003 - Ação: ALERTA - Efetuar Requisição - Detalhes: Quantidade 2 excede a média diária () ou mensal () de uso do item Cx. Grampo
+[2024-06-26 20:40:23] Matricula: 2024003 - Ação: SUCESSO - Efetuar Requisição - Detalhes: Requisição 24, Item Cx. Grampo
+[2024-06-26 20:40:39] Matricula: 2024002 - Ação: Login bem-sucedido - Detalhes: Email: gerente@ti.com
+[2024-06-26 20:40:43] Matricula: 2024002 - Ação: SUCESSO - Recusar Solicitação - Detalhes: Solicitação 24 Recusada!!
+[2024-06-26 20:41:00] Matricula: 2024004 - Ação: Login bem-sucedido - Detalhes: Email: almo@almo.com
+[2024-06-26 20:41:33] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-06-26 20:42:15] Matricula: 2024003 - Ação: Login bem-sucedido - Detalhes: Email: fun@ti.com
+[2024-06-26 20:46:56] Matricula: 2024004 - Ação: Login bem-sucedido - Detalhes: Email: almo@almo.com
+[2024-06-26 20:47:14] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-06-26 20:47:26] Matricula: 2024002 - Ação: Login bem-sucedido - Detalhes: Email: gerente@ti.com

@@ -122,7 +122,7 @@ if (!isset($atual)) {
                         }
                         if (!empty($_GET['dataRet'])) {
                             $dataRet = $conn->real_escape_string($_GET['dataRet']);
-                            $conditions[] = "DataSolicitacao = '$dataRet'";
+                            $conditions[] = "DATE(DataSolicitacao) = '$dataRet'";
                         }
 
                         $sql = "SELECT * FROM requisicao";
