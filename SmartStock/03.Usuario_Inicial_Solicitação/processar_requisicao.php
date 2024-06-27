@@ -46,19 +46,39 @@ if (isset($_POST['submit'])) {
         exit();
     }
 
-    // Calcular média diária e mensal de uso do item
-    $sql_media_diaria = "SELECT AVG(QuantidadeItem) AS media_diaria FROM requisicao WHERE FK_ITEM_ID_Item = '$item_id' AND DataSolicitacao >= DATE_SUB(NOW(), INTERVAL 1 DAY)";
+    // Calcular média diária do último mês
+    $sql_media_diaria = "
+    SELECT AVG(daily_avg) AS media_diaria
+    FROM (
+        SELECT DATE(DataSolicitacao) as date, AVG(QuantidadeItem) as daily_avg
+        FROM requisicao
+        WHERE FK_ITEM_ID_Item = '$item_id' 
+        AND DataSolicitacao >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
+        GROUP BY DATE(DataSolicitacao)
+    ) as daily_averages;
+    ";
     $result_media_diaria = $conn->query($sql_media_diaria);
     $media_diaria = ($result_media_diaria->num_rows > 0) ? $result_media_diaria->fetch_assoc()['media_diaria'] : 0;
 
-    $sql_media_mensal = "SELECT AVG(QuantidadeItem) AS media_mensal FROM requisicao WHERE FK_ITEM_ID_Item = '$item_id' AND DataSolicitacao >= DATE_SUB(NOW(), INTERVAL 1 MONTH)";
+    // Calcular média mensal dos últimos 3 meses
+    $sql_media_mensal = "
+    SELECT AVG(monthly_avg) AS media_mensal
+    FROM (
+        SELECT DATE_FORMAT(DataSolicitacao, '%Y-%m') as month, AVG(QuantidadeItem) as monthly_avg
+        FROM requisicao
+        WHERE FK_ITEM_ID_Item = '$item_id' 
+        AND DataSolicitacao >= DATE_SUB(NOW(), INTERVAL 3 MONTH)
+        GROUP BY DATE_FORMAT(DataSolicitacao, '%Y-%m')
+    ) as monthly_averages;
+    ";
     $result_media_mensal = $conn->query($sql_media_mensal);
     $media_mensal = ($result_media_mensal->num_rows > 0) ? $result_media_mensal->fetch_assoc()['media_mensal'] : 0;
 
     // Verifica se a quantidade solicitada excede a média diária ou mensal
     if ($quantidade > $media_diaria || $quantidade > $media_mensal) {
-        registrarLog('ALERTA - Efetuar Requisição', "Quantidade $quantidade excede a média diária ($media_diaria) ou mensal ($media_mensal) de uso do item $item");
+    registrarLog('ALERTA - Efetuar Requisição', "Quantidade $quantidade excede a média diária ($media_diaria) ou mensal ($media_mensal) de uso do item $item");
     }
+
 
     // Verifica a quantidade disponível do item
     $sql_quantidade_disponivel = "SELECT Quantidade FROM item WHERE ID_Item = '$item_id'";
@@ -70,9 +90,9 @@ if (isset($_POST['submit'])) {
 
         // Verifica se a quantidade solicitada é menor ou igual à quantidade disponível
         if ($quantidade > $quantidade_disponivel) {
-            registrarLog('ERRO - Efetuar Requisição', "Quantidade $quantidade excedente ao Estoque!!");
+            registrarLog('ERRO - Efetuar Requisição', "Quantidade $quantidade excedente ao Estoque do item $item_id!!");
             echo "<script>
-            alert('Quantidade solicitada excede a quantidade disponível.');
+            alert('Quantidade solicitada excede a quantidade " . $quantidade_disponivel . " disponível.');
             window.location.href = 'index.php';
             </script>";
             exit();
@@ -147,7 +167,7 @@ if (isset($_POST['editar'])) {
 
         // Verifica se a quantidade solicitada é menor ou igual à quantidade disponível
         if ($quantidade > $quantidade_disponivel) {
-            registrarLog('ERRO - Editar Requisição', "Quantidade $quantidade excedente ao Estoque!!");
+            registrarLog('ERRO - Editar Requisição', "Quantidade $quantidade excedente ao Estoque do item $item_id!!");
             echo "<script>
             alert('Quantidade solicitada excede a quantidade disponível.');
             window.location.href = 'index.php';
