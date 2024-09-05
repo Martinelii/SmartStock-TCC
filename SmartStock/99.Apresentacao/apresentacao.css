@@ -263,6 +263,7 @@ body {
     align-items: center;
     transition: 0.2s;
     background-color: #ffffff;
+    cursor: pointer;
 }
 
 .secao-imagens .sub-secao .campo-imagens .legenda{
