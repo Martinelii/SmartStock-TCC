@@ -1,0 +1,210 @@
+@media only screen and (max-width: 1024px) {
+    .home{
+        height: max-content;
+    }
+
+    .home .titulo{
+        height: 25vh;
+        line-height: 25vh;
+    }
+
+    .home .titulo h1{
+        font-size: 48px;
+    }
+
+    .home .sub-secao{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        padding-bottom: 40px;
+    }
+
+    .home .sub-secao .desc{
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    .home .sub-secao .nomes{
+        padding-top: 50px;
+        width: 100%;
+    }
+
+
+
+
+
+
+
+    .secao-sobre{
+        height: max-content;
+    }
+
+    .secao-sobre .titulo{
+        height: 90px;
+    }
+
+    .secao-sobre .titulo h1{
+        font-size: 28px;
+    }
+
+    .secao-sobre .sub-secao{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        padding-bottom: 40px;
+    }
+
+    .secao-sobre .sub-secao .desc{
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    .secao-sobre .sub-secao .campo-imagem{
+        padding: 15px;
+        padding-top: 25px;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .secao-sobre .sub-secao .campo-imagem .mini-imagem{
+        display: block;
+        width: 48%;
+    }
+
+    .secao-sobre .sub-secao .campo-imagem .mini-imagem img{
+        max-width: 100%;
+    }
+
+    .secao-sobre .sub-secao .campo-imagem .mini-imagem p{
+        text-align: right;
+    }
+
+
+
+
+
+
+    .secao-imagens{
+        height: max-content;
+    }
+
+    .secao-imagens .titulo{
+        height: 90px;
+    }
+
+    .secao-imagens .titulo h1{
+        font-size: 28px;
+    }
+
+    .secao-imagens .sub-secao{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        padding: 20px;
+        padding-bottom: 35px;
+    }
+
+
+
+
+
+
+    .secao-documentacao{
+        height: max-content;
+    }
+
+    .secao-documentacao .titulo{
+        height: 90px;
+    }
+
+    .secao-documentacao .titulo h1{
+        font-size: 28px;
+    }
+
+    .secao-documentacao .sub-secao{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        padding-bottom: 40px;
+    }
+
+    .secao-documentacao .sub-secao .desc{
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    .secao-documentacao .sub-secao .campo-icone{
+        padding-top: 30px;
+    }
+
+    .secao-documentacao .sub-secao .campo-icone{
+        padding-top: 30px;
+    }
+
+    .secao-documentacao .sub-secao .campo-icone .icone svg{
+        width: 90%;
+        height: 90%;
+        border-radius: 15px;
+        padding: 5px;
+    }
+
+
+
+
+
+
+    .secao-tecnologias{
+        height: max-content;
+    }
+
+    .secao-tecnologias .titulo{
+        height: 90px;
+    }
+
+    .secao-tecnologias .titulo h1{
+        font-size: 28px;
+    }
+
+    .secao-tecnologias .sub-secao{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        padding-bottom: 40px;
+    }
+
+    .secao-tecnologias .icone-tecnologia {
+        height: 175px;
+        width: 175px;
+    }
+
+
+
+
+
+    .secao-integrantes{
+        height: max-content;
+    }
+
+    .secao-integrantes .titulo{
+        height: 90px;
+        margin-bottom: 30px;
+    }
+
+    .secao-integrantes .titulo h1{
+        font-size: 28px;
+    }
+
+    .secao-integrantes .info-integrante{
+        width: 400px;
+    }
+
+}

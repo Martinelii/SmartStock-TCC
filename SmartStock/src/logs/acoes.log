@@ -157,3 +157,46 @@
 [2024-06-27 11:41:41] Matricula: 2024003 - Ação: SUCESSO - Efetuar Requisição - Detalhes: Requisição 26, Item Cx. Grampo
 [2024-06-27 11:41:46] Matricula: 2024003 - Ação: ERRO - Editar Requisição - Detalhes: Quantidade 11 excedente ao Estoque do item 14!!
 [2024-06-27 11:41:54] Matricula: 2024003 - Ação: SUCESSO - Excluir Requisição - Detalhes: 26
+[2024-08-24 14:50:57] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: adm@adm.com
+[2024-08-24 14:50:57] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: adm@adm.com
+[2024-08-24 14:51:08] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-08-24 14:54:55] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: gerente@ti.com
+[2024-08-24 14:54:55] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: gerente@ti.com
+[2024-08-24 14:55:06] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: gerente@ti.com
+[2024-08-24 14:55:06] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: gerente@ti.com
+[2024-08-24 14:55:29] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: fun@ti.com
+[2024-08-24 14:55:29] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: fun@ti.com
+[2024-08-24 14:55:44] Matricula: 2024004 - Ação: Login bem-sucedido - Detalhes: Email: almo@almo.com
+[2024-08-27 19:37:00] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-08-27 19:37:26] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: gerente@ti.com
+[2024-08-27 19:37:26] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: gerente@ti.com
+[2024-08-27 19:37:39] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: gerente@ti.com
+[2024-08-27 19:37:39] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: gerente@ti.com
+[2024-08-27 19:37:52] Matricula: 2024004 - Ação: Login bem-sucedido - Detalhes: Email: almo@almo.com
+[2024-08-27 19:40:28] Matricula: 2024004 - Ação: Login bem-sucedido - Detalhes: Email: almo@almo.com
+[2024-08-30 17:41:24] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-08-30 17:42:00] Matricula: 2024004 - Ação: Login bem-sucedido - Detalhes: Email: almo@almo.com
+[2024-08-30 17:42:20] Matricula: 2024004 - Ação: SUCESSO - Finalizar Requisição - Detalhes: Solicitação  Item , Quantidade 0
+[2024-08-30 17:45:33] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: gerente@ti.com
+[2024-08-30 17:45:34] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: gerente@ti.com
+[2024-08-30 17:45:52] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: gerente@ti.com
+[2024-08-30 17:45:52] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: gerente@ti.com
+[2024-08-30 17:46:02] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: gerente@ti.com
+[2024-08-30 17:46:02] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: gerente@ti.com
+[2024-08-30 17:47:45] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: fun@ti.com
+[2024-08-30 17:47:45] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: fun@ti.com
+[2024-08-30 17:47:56] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: fun@ti.com
+[2024-08-30 17:47:56] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: fun@ti.com
+[2024-08-30 17:48:32] Matricula: 2024098 - Ação: Login bem-sucedido - Detalhes: Email: adriel@teste.com
+[2024-08-30 17:50:06] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Senha incorreta - Email: crypto@teste.com
+[2024-08-30 17:50:06] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: crypto@teste.com
+[2024-08-30 17:50:17] Matricula: 2024024 - Ação: Login bem-sucedido - Detalhes: Email: crypto@teste.com
+[2024-08-30 19:51:42] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-08-30 19:53:57] Matricula: 2024004 - Ação: Login bem-sucedido - Detalhes: Email: almo@almo.com
+[2024-08-30 20:15:48] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email não encontrado - Email: funcionario@rh.com
+[2024-08-30 20:15:48] Matricula: desconhecido - Ação: Tentativa de login falhou - Detalhes: Email: funcionario@rh.com
+[2024-08-30 20:16:26] Matricula: 2024001 - Ação: Login bem-sucedido - Detalhes: Email: adm@adm.com
+[2024-08-30 20:17:05] Matricula: 2024001 - Ação: SUCESSO - Cadastro de Conta - Detalhes: Matricula Cadastrada: 2024019, Status: Ativo
+[2024-08-30 20:17:12] Matricula: 2024019 - Ação: Login bem-sucedido - Detalhes: Email: funcionario@rh.com
+[2024-08-30 20:19:42] Matricula: 2024019 - Ação: ALERTA - Efetuar Requisição - Detalhes: Quantidade 15 excede a média diária () ou mensal (10.00000000) de uso do item Pacote Folha A3
+[2024-08-30 20:19:42] Matricula: 2024019 - Ação: SUCESSO - Efetuar Requisição - Detalhes: Requisição 14, Item Pacote Folha A3
