@@ -13,7 +13,8 @@ body {
 
 
 .home {
-    height: 98vh;
+    min-height: 98vh;
+    max-height: fit-content;
     display:flexbox;
     overflow: hidden;
 }
@@ -97,7 +98,8 @@ body {
 .secao-sobre {
     background-color: #43766C;
     width: 100%;
-    height: 98vh;
+    min-height: 98vh;
+    max-height: fit-content;
     overflow: hidden;
 }
 
@@ -172,7 +174,8 @@ body {
 .secao-imagens {
     background-color: #B19470;
     width: 100%;
-    height: 98vh;
+    min-height: 98vh;
+    max-height: fit-content;
     overflow: hidden;
 }
 
@@ -288,6 +291,7 @@ body {
 .secao-documentacao {
     width: 100%;
     height: 68vh;
+    max-height: fit-content;
     overflow: hidden;
 }
 
@@ -372,7 +376,8 @@ body {
 .secao-tecnologias {
     background-color: #43766C;
     width: 100%;
-    height: 98vh;
+    min-height: 98vh;
+    max-height: fit-content;
     overflow: hidden;
 }
 
@@ -429,7 +434,8 @@ body {
 
 .secao-integrantes {
     width: 100%;
-    height: max-content;
+    min-height: 98vh;
+    max-height: fit-content;
     overflow: hidden;
     margin-bottom: 40px;
 }
