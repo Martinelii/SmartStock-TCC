@@ -16,7 +16,6 @@ body {
     min-height: 98vh;
     max-height: fit-content;
     display:flexbox;
-    overflow: hidden;
 }
 
 .home .titulo {
@@ -71,7 +70,7 @@ body {
     margin: 0 auto;
     height: max-content;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .home .desc{
@@ -100,7 +99,6 @@ body {
     width: 100%;
     min-height: 98vh;
     max-height: fit-content;
-    overflow: hidden;
 }
 
 .secao-sobre .titulo{
@@ -121,6 +119,7 @@ body {
     margin: 0 auto;
     max-width: 1000px;
     display: flex;
+    padding-bottom: 20px;
 }
 
 .secao-sobre .sub-secao .desc{
@@ -176,7 +175,6 @@ body {
     width: 100%;
     min-height: 98vh;
     max-height: fit-content;
-    overflow: hidden;
 }
 
 .secao-imagens .titulo{
@@ -197,9 +195,11 @@ body {
     margin: 0 auto;
     max-width: 1000px;
     display: flex;
-    height: 70vh;
+    min-height: 70vh;
+    max-height: fit-content;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .secao-imagens .sub-secao .campo-botoes{
@@ -292,7 +292,6 @@ body {
     width: 100%;
     height: 68vh;
     max-height: fit-content;
-    overflow: hidden;
 }
 
 .secao-documentacao .titulo{
@@ -313,6 +312,7 @@ body {
     margin: 0 auto;
     max-width: 1000px;
     display: flex;
+    padding-bottom: 20px;
 }
 
 .secao-documentacao .sub-secao .desc{
@@ -378,7 +378,6 @@ body {
     width: 100%;
     min-height: 98vh;
     max-height: fit-content;
-    overflow: hidden;
 }
 
 .secao-tecnologias .titulo {
@@ -402,6 +401,7 @@ body {
     margin: 0 auto;
     max-width: 1000px;
     flex-wrap: wrap;
+    padding-bottom: 20px;
 }
 
 .secao-tecnologias .icone-tecnologia {
@@ -436,8 +436,6 @@ body {
     width: 100%;
     min-height: 98vh;
     max-height: fit-content;
-    overflow: hidden;
-    margin-bottom: 40px;
 }
 
 .secao-integrantes .titulo{
@@ -462,6 +460,7 @@ body {
     text-align: center;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .secao-integrantes .info-integrante{
