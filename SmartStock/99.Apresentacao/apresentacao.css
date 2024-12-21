@@ -29,7 +29,7 @@ body {
 
 .home .titulo h1{
     font-size: 72px;
-    color: #F8FAE5;
+    color: #FFFFFF;
 }
 
 .home .menu {
@@ -112,7 +112,7 @@ body {
 
 .secao-sobre .titulo h1{
     font-size: 54px;
-    color: #F8FAE5;
+    color: #FFFFFF;
 }
 
 .secao-sobre .sub-secao{
@@ -129,7 +129,7 @@ body {
 }
 
 .secao-sobre .sub-secao .desc p{
-    color: #F8FAE5;
+    color: #FFFFFF;
     font-size: 18px;
 }
 
@@ -143,12 +143,12 @@ body {
     max-width: 85%;
     display: block;
     border-radius: 10px;
-    border: #F8FAE5 solid 1px;
+    border: #FFFFFF solid 1px;
     float: right;
 }
 
 .secao-sobre .sub-secao .mini-imagem p{
-    color: #F8FAE5;
+    color: #FFFFFF;
     font-size: 12px;
     float: right;
     user-select: none;
@@ -156,13 +156,13 @@ body {
 }
 
 .secao-sobre .sub-secao .mini-imagem a{
-    color: #F8FAE5;
+    color: #FFFFFF;
     border-radius: 5px;
     text-decoration: underline;
 }
 
 .secao-sobre .sub-secao .mini-imagem a:hover{
-    color: #F8FAE5;
+    color: #FFFFFF;
     background-color: #4CAF50;
 }
 
@@ -188,7 +188,7 @@ body {
 
 .secao-imagens .titulo h1{
     font-size: 54px;
-    color: #F8FAE5;
+    color: #FFFFFF;
 }
 
 .secao-imagens .sub-secao{
@@ -279,7 +279,7 @@ body {
 
 .secao-imagens .sub-secao .campo-imagens .legenda p{
     margin: 0 auto;
-    color: #F8FAE5;
+    color: #FFFFFF;
     text-align: center;
     font-size: 14px;
 }
@@ -290,7 +290,7 @@ body {
 
 .secao-documentacao {
     width: 100%;
-    height: 68vh;
+    height: 78vh;
     max-height: fit-content;
 }
 
@@ -333,7 +333,7 @@ body {
 }
 
 .secao-documentacao .sub-secao .desc a:hover{
-    color: #F8FAE5;
+    color: #FFFFFF;
     background-color: #4CAF50;
 }
 
@@ -391,7 +391,7 @@ body {
 
 .secao-tecnologias .titulo h1 {
     font-size: 54px;
-    color: #F8FAE5;
+    color: #FFFFFF;
 }
 
 .secao-tecnologias .sub-secao {
@@ -423,7 +423,7 @@ body {
 
 .secao-tecnologias .icone-tecnologia p {
     text-align: center;
-    color: #F8FAE5;
+    color: #FFFFFF;
 }
 
 
@@ -517,7 +517,7 @@ body {
 }
 
 .secao-integrantes .info-integrante .dados a:hover{
-    color: #F8FAE5;
+    color: #FFFFFF;
     background-color: #4CAF50;
 }
 
@@ -529,7 +529,7 @@ body {
 }
 
 .rodape p{
-    color: #F8FAE5;
+    color: #FFFFFF;
     user-select: none;
 }
 
