@@ -290,7 +290,7 @@ body {
 
 .secao-documentacao {
     width: 100%;
-    height: 78vh;
+    min-height: 78vh;
     max-height: fit-content;
 }
 

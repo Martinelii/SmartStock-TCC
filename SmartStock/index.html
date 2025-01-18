@@ -23,6 +23,14 @@
         <link rel="stylesheet" href="./99.Apresentacao/responsive.css">
         
         <script type="text/javascript" src="./99.Apresentacao/js/apresentacao.js"></script>
+
+        <script type="text/javascript">
+            if (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "") {
+                window.location.href = "./00.Login/";
+            } else {
+                window.location.href = "https://martinelii.github.io/SmartStock-TCC/SmartStock/";
+            }
+        </script>
     </head>
     <body>
         <section class="home">
@@ -299,8 +307,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--integrantes (creditos, equipe?) incluir o adilson como orientador, primeiro o keven ja que o trabalho ta no nome dele, depois por ordem alfabetica descrever em poucas palavras as funções de cada um, link para github e linkedin pelo menos (talvez lattes tambem) -->
         </section>
 
         <div id="modal" class="modal">
@@ -310,7 +316,7 @@
         </div>
 
         <footer class="rodape">
-            <p> Setembro • 2024 </p>
+            <p> Dezembro • 2024 </p>
         </footer>
     </body>
 </html>
