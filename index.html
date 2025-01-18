@@ -18,7 +18,13 @@
         <link rel="icon" href="./SmartStock/99.Apresentacao/img/favicon.png">
 
         <script type="text/javascript">
-            window.location.href = "./SmartStock/";
+            if (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "") {
+                window.location.href = "/SmartStock-TCC-main/SmartStock/";
+            } 
+            else if (location.hostname === "martinelii.github.io" && !location.pathname.startsWith("/SmartStock-TCC/SmartStock/")) {
+                window.location.href = "/SmartStock-TCC/SmartStock/";
+            }
         </script>
+        
     </head>
 </html>
