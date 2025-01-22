@@ -52,9 +52,9 @@
 
     Baixe o código-fonte para seu ambiente local:
 
-```bash
+	```bash
 	git clone https://github.com/Martinelii/SmartStock-TCC.git
-```
+	```
 
 2.  **Configure o ambiente local**
 
@@ -85,19 +85,19 @@
     
     No arquivo `config.php`, configure os parâmetros de acesso ao banco de dados:
 
-```php
+	```php
 	define('DB_HOST', 'localhost');
 	define('DB_NAME', 'smartstock_db');
 	define('DB_USER', 'root');
 	define('DB_PASS', '');
-```
+	```
 
 5.  **Acesse o sistema no navegador**  
 Após configurar tudo, abra o navegador e acesse:
 
-```url
+	```url
 	http://localhost/SmartStock-TCC
-```
+	```
 
 6.  **Teste as funcionalidades**
 
